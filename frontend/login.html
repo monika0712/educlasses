@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Student Login | EduClasses</title>
+
+<link rel="icon" href="assets/images/icon.png">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/api-config.js"></script>
+
+<style>
+
+body{
+margin:0;
+padding-top:60px;
+background:whitesmoke;
+}
+
+/* Header */
+
+.login-header{
+background-image:url("assets/images/bg1.png");
+background-position:center;
+color:white;
+text-align:center;
+padding:100px 20px;
+}
+
+/* Login Box */
+
+.login-box{
+background:white;
+padding:40px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+max-width:450px;
+margin:auto;
+}
+
+.form-control{
+background:#f3f3f3;
+border:none;
+padding:12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top px-5" style="background:blue;">
+
+<div class="container-fluid">
+
+<a class="navbar-brand" href="index.html">
+<img src="assets/images/logo.png" style="height:50px;">
+</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse justify-content-end" id="menu">
+
+<ul class="navbar-nav gap-3 fw-bold">
+
+<li class="nav-item">
+<a class="nav-link" href="index.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="Courses.html">Courses</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="batch.html">Batch Schedule</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="Contact.html">Contact</a>
+</li>
+
+<li class="nav-item dropdown">
+<a class="btn btn-info text-dark fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+Login
+</a>
+<ul class="dropdown-menu dropdown-menu-end">
+<li><a class="dropdown-item active" href="login.html">Student Login</a></li>
+<li><a class="dropdown-item" href="admin-login.html">Admin Login</a></li>
+</ul>
+</li>
+
+</ul>
+
+</div>
+</div>
+</nav>
+
+
+<!-- HEADER -->
+
+<section class="login-header">
+
+<h1 style="font-size:60px;font-weight:bold;">
+Student Login
+</h1>
+
+<p style="font-size:20px;">
+Access your student dashboard
+</p>
+
+</section>
+
+
+<!-- LOGIN / REGISTER FORM -->
+
+<section class="container py-5">
+
+<div class="login-box">
+
+<ul class="nav nav-pills nav-justified mb-4" id="authTabs">
+<li class="nav-item">
+<button type="button" class="nav-link active w-100" id="loginTabBtn" onclick="showTab('login')">Existing Student Login</button>
+</li>
+<li class="nav-item">
+<button type="button" class="nav-link w-100" id="registerTabBtn" onclick="showTab('register')">New Student Sign Up</button>
+</li>
+</ul>
+
+<!-- LOGIN TAB -->
+<form id="loginForm" onsubmit="return handleLogin(event)">
+
+<input type="email" id="loginEmail" class="form-control mb-3" placeholder="Email Address" required>
+
+<input type="password" id="loginPassword" class="form-control mb-3" placeholder="Password" required>
+
+<div class="text-center">
+<button class="btn btn-primary fw-bold px-4" type="submit" id="loginBtn">
+Login
+</button>
+</div>
+
+<p id="loginMsg" class="text-center mt-3 fw-bold"></p>
+
+</form>
+
+<!-- REGISTER TAB -->
+<form id="registerForm" class="d-none" onsubmit="return handleRegister(event)">
+
+<input type="text" id="regName" class="form-control mb-3" placeholder="Full Name" required>
+
+<input type="email" id="regEmail" class="form-control mb-3" placeholder="Email Address" required>
+
+<input type="tel" id="regPhone" class="form-control mb-3" placeholder="Phone Number" pattern="[0-9]{10}" maxlength="10" required>
+
+<select id="regCourse" class="form-control mb-3" required>
+<option value="">Select Course</option>
+<option>Full Stack Web Development</option>
+<option>Java Programming</option>
+<option>Python Programming</option>
+<option>Data Analytics</option>
+<option>Data Science</option>
+<option>Cyber Security</option>
+</select>
+
+<input type="password" id="regPassword" class="form-control mb-3" placeholder="Password (min 6 characters)" minlength="6" required>
+
+<div class="text-center">
+<button class="btn btn-success fw-bold px-4" type="submit" id="registerBtn">
+Create Account
+</button>
+</div>
+
+<p id="registerMsg" class="text-center mt-3 fw-bold"></p>
+
+</form>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer style="background:navy;color:white;margin-top:50px;">
+
+<div class="container py-5">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">EduClasses</h5>
+
+<p>
+Learn programming, web development and IT skills with expert teachers.
+Our mission is to help students build strong careers in technology.
+</p>
+
+</div>
+
+
+<div class="col-md-3">
+
+<h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">Quick Links</h5>
+
+<ul style="list-style:none;padding:0;">
+
+<li><a href="index.html" style="color:white;text-decoration:none;">Home</a></li>
+<li><a href="Courses.html" style="color:white;text-decoration:none;">Courses</a></li>
+<li><a href="batch.html" style="color:white;text-decoration:none;">Batch Schedule</a></li>
+<li><a href="Contact.html" style="color:white;text-decoration:none;">Contact</a></li>
+
+</ul>
+
+</div>
+
+
+<div class="col-md-2">
+
+<h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">Address</h5>
+
+<p>
+EduClasses Institute<br>
+IT Park Road<br>
+Pune, Maharashtra<br>
+India - 440001
+</p>
+
+</div>
+
+
+<div class="col-md-3">
+
+<h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">Location</h5>
+
+<iframe
+src="https://www.google.com/maps?q=SEED%20Infotech%20Erandwane%20Pune&output=embed"
+width="100%"
+height="180"
+style="border-radius:8px;border:0;">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+<div style="background:royalblue;text-align:center;padding:15px;">
+© 2026 EduClasses. All Rights Reserved.
+</div>
+
+</footer>
+
+
+<script>
+
+function showTab(tab){
+  const loginForm = document.getElementById("loginForm");
+  const registerForm = document.getElementById("registerForm");
+  const loginTabBtn = document.getElementById("loginTabBtn");
+  const registerTabBtn = document.getElementById("registerTabBtn");
+
+  if(tab === "login"){
+    loginForm.classList.remove("d-none");
+    registerForm.classList.add("d-none");
+    loginTabBtn.classList.add("active");
+    registerTabBtn.classList.remove("active");
+  } else {
+    registerForm.classList.remove("d-none");
+    loginForm.classList.add("d-none");
+    registerTabBtn.classList.add("active");
+    loginTabBtn.classList.remove("active");
+  }
+}
+
+async function handleLogin(event){
+  event.preventDefault();
+
+  const btn = document.getElementById("loginBtn");
+  const msg = document.getElementById("loginMsg");
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  btn.disabled = true;
+  btn.textContent = "Logging in...";
+  msg.className = "text-center mt-3 fw-bold";
+  msg.textContent = "";
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await res.json();
+
+    if(!res.ok){
+      msg.classList.add("text-danger");
+      msg.textContent = data.message || "Login failed. Please try again.";
+      return false;
+    }
+
+    localStorage.setItem("eduToken", data.token);
+    localStorage.setItem("eduStudent", JSON.stringify(data.student));
+    window.location = "student.html";
+  } catch (err) {
+    msg.classList.add("text-danger");
+    msg.textContent = "Could not reach the server. Is the backend running?";
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Login";
+  }
+
+  return false;
+}
+
+async function handleRegister(event){
+  event.preventDefault();
+
+  const btn = document.getElementById("registerBtn");
+  const msg = document.getElementById("registerMsg");
+
+  const fullName = document.getElementById("regName").value.trim();
+  const email = document.getElementById("regEmail").value.trim();
+  const phone = document.getElementById("regPhone").value.trim();
+  const course = document.getElementById("regCourse").value;
+  const password = document.getElementById("regPassword").value;
+
+  btn.disabled = true;
+  btn.textContent = "Creating account...";
+  msg.className = "text-center mt-3 fw-bold";
+  msg.textContent = "";
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fullName, email, phone, course, password }),
+    });
+    const data = await res.json();
+
+    if(!res.ok){
+      msg.classList.add("text-danger");
+      msg.textContent = data.message || "Registration failed. Please try again.";
+      return false;
+    }
+
+    localStorage.setItem("eduToken", data.token);
+    localStorage.setItem("eduStudent", JSON.stringify(data.student));
+    window.location = "student.html";
+  } catch (err) {
+    msg.classList.add("text-danger");
+    msg.textContent = "Could not reach the server. Is the backend running?";
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Create Account";
+  }
+
+  return false;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Courses | EduClasses</title>
+
+<link rel="icon" href="assets/images/icon.png">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+
+body{
+margin:0;
+padding-top:50px;
+background:whitesmoke;
+}
+
+/* Course Header with Image */
+
+.course-header{
+background-image: url("assets/images/bg1.png");
+background-position:center;
+color:white;
+text-align:center;
+padding:100px 20px;
+}
+
+/* Course Cards */
+
+.course-card{
+border:none;
+border-radius:12px;
+overflow:hidden;
+display:none;
+background:white;
+}
+
+.course-img{
+height:200px;
+object-fit:center;
+}
+
+.course-info{
+font-size:14px;
+color:gray;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top px-5" style="background:blue;">
+<div class="container-fluid">
+
+<a class="navbar-brand" href="index.html">
+<img src="assets/images/logo.png" style="height:50px;">
+</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse justify-content-end" id="menu">
+
+<ul class="navbar-nav gap-3 fw-bold">
+
+<li class="nav-item">
+<a class="nav-link" href="index.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link active" href="#">Courses</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="batch.html">Batch Schedule</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="Contact.html">Contact</a>
+</li>
+
+<li class="nav-item dropdown">
+<a class="btn btn-info text-dark fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+Login
+</a>
+<ul class="dropdown-menu dropdown-menu-end">
+<li><a class="dropdown-item" href="login.html">Student Login</a></li>
+<li><a class="dropdown-item" href="admin-login.html">Admin Login</a></li>
+</ul>
+</li>
+
+</ul>
+
+</div>
+</div>
+</nav>
+
+<!-- HEADER -->
+
+<section class="course-header">
+
+<h1 style="font-size:70px; font-weight:bold;">
+Our Professional Courses
+</h1>
+
+<p style="font-size:24px; margin-top:5px;">
+Upgrade your skills with industry level training
+</p>
+
+</section>
+
+<!-- COURSES -->
+
+<section class="container py-5">
+
+<div class="row g-4">
+
+<!-- Course 1 -->
+
+<div class="col-md-4">
+<div class="card course-card">
+
+<img src="assets/images/web.jpg" class="card-img-top course-img">
+
+<div class="card-body">
+
+<h5>Full Stack Web Development</h5>
+
+<p class="course-info">Duration: 6 Months | Level: Beginner to Advanced</p>
+
+<p>
+Learn HTML, CSS, JavaScript, Bootstrap, React and backend development.
+</p>
+
+<a href="https://www.seedinfotech.com/full-stack-development/" target="blank" class="btn btn-success btn">
+Know More
+</a>
+
+<a href="assets/syllabus/web.pdf" target="blank" class="btn btn-outline-secondary btn" download>
+Download Syllabus
+</a>
+
+</div>
+
+</div>
+</div>
+
+<!-- Course 2 -->
+
+<div class="col-md-4">
+<div class="card course-card">
+
+<img src="assets/images/java1.jpg" class="card-img-top course-img">
+
+<div class="card-body">
+
+<h5>Java Programming</h5>
+
+<p class="course-info">Duration: 4 Months | Level: Beginner</p>
+
+<p>
+Learn Core Java, OOP concepts, JDBC and real projects.
+</p>
+
+<a href="https://www.seedinfotech.com/learn-java-programming/" target="blank" class="btn btn-success btn">
+Know More
+</a>
+
+<a href="assets/syllabus/java.pdf" target="blank" class="btn btn-outline-secondary btn" download>
+Download Syllabus
+</a>
+
+</div>
+
+</div>
+</div>
+
+<!-- Course 3 -->
+
+<div class="col-md-4">
+<div class="card course-card">
+
+<img src="assets/images/python.jpg" class="card-img-top course-img">
+
+<div class="card-body">
+
+<h5>Python Programming</h5>
+
+<p class="course-info">Duration: 4 Months | Level: Beginner</p>
+
+<p>
+Learn Python programming for web development and automation.
+</p>
+
+<a href="https://www.seedinfotech.com/data-analysis-visualization-using-python/" target="blank" class="btn btn-success btn">
+Know More
+</a>
+
+<a href="assets/syllabus/python.pdf" target="blank" class="btn btn-outline-secondary btn" download>
+Download Syllabus
+</a>
+
+</div>
+
+</div>
+</div>
+
+<!-- Course 4 -->
+
+<div class="col-md-4">
+<div class="card course-card">
+
+<img src="assets/images/dataanalytics.webp" class="card-img-top course-img">
+
+<div class="card-body">
+
+<h5>Data Analytics</h5>
+
+<p class="course-info">Duration: 5 Months | Level: Intermediate</p>
+
+<p>
+Learn Excel, SQL, Power BI and Python to analyze data and build reports.
+</p>
+
+<a href="course-data-analytics.html" class="btn btn-success btn">
+Know More
+</a>
+
+<a href="assets/syllabus/data-analytics.pdf" class="btn btn-outline-secondary btn" download>
+Download Syllabus
+</a>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- Course 5 -->
+
+<div class="col-md-4">
+<div class="card course-card">
+
+<img src="assets/images/datascience.webp" class="card-img-top course-img">
+
+<div class="card-body">
+
+<h5>Data Science</h5>
+
+<p class="course-info">Duration: 6 Months | Level: Advanced</p>
+
+<p>
+Learn Python, Machine Learning, Pandas, NumPy and real data science projects.
+</p>
+
+<a href="course-data-science.html" class="btn btn-success btn">
+Know More
+</a>
+
+<a href="assets/syllabus/data-science.pdf" class="btn btn-outline-secondary btn" download>
+Download Syllabus
+</a>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- Course 6 -->
+
+<div class="col-md-4">
+<div class="card course-card">
+
+<img src="assets/images/dotnet.webp" class="card-img-top course-img">
+
+<div class="card-body">
+
+<h5>.NET Developer</h5>
+
+<p class="course-info">Duration: 5 Months | Level: Intermediate</p>
+
+<p>
+Learn C#, ASP.NET, MVC, SQL Server and build enterprise web applications.
+</p>
+
+<a href="course-dotnet.html" class="btn btn-success btn">
+Know More
+</a>
+
+<a href="assets/syllabus/dotnet.pdf" class="btn btn-outline-secondary btn" download>
+Download Syllabus
+</a>
+
+</div>
+
+</div>
+</div>
+
+<!-- Course 7 -->
+
+<div class="col-md-4">
+<div class="card course-card">
+
+<img src="assets/images/uiux.jpg" class="card-img-top course-img">
+
+<div class="card-body">
+
+<h5>UI / UX Design</h5>
+
+<p class="course-info">Duration: 3 Months | Level: Beginner</p>
+
+<p>
+Learn Figma, wireframing, prototyping and modern UI design principles.
+</p>
+
+<a href="course-uiux.html" class="btn btn-success btn">
+Know More
+</a>
+
+<a href="assets/syllabus/uiux.pdf" class="btn btn-outline-secondary btn" download>
+Download Syllabus
+</a>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- Course 8 -->
+
+<div class="col-md-4">
+<div class="card course-card">
+
+<img src="assets/images/cybersec.jpg" class="card-img-top course-img">
+
+<div class="card-body">
+
+<h5>Cyber Security</h5>
+
+<p class="course-info">Duration: 5 Months | Level: Intermediate</p>
+
+<p>
+Learn ethical hacking, network security and cyber attack prevention.
+</p>
+
+<a href="course-cyber.html" class="btn btn-success btn">
+Know More
+</a>
+
+<a href="assets/syllabus/cyber.pdf" class="btn btn-outline-secondary btn" download>
+Download Syllabus
+</a>
+
+</div>
+
+</div>
+</div>
+
+
+
+
+<!-- Course 11 -->
+
+<div class="col-md-4">
+<div class="card course-card">
+
+<img src="assets/images/ai.webp" class="card-img-top course-img">
+
+<div class="card-body">
+
+<h5>Artificial Intelligence</h5>
+
+<p class="course-info">Duration: 6 Months | Level: Advanced</p>
+
+<p>
+Learn AI algorithms, deep learning and intelligent systems.
+</p>
+
+<a href="course-ai.html" class="btn btn-success btn">
+Know More
+</a>
+
+<a href="assets/syllabus/ai.pdf" class="btn btn-outline-secondary btn" download>
+Download Syllabus
+</a>
+
+</div>
+
+</div>
+</div>
+
+
+
+
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer style="background:navy; color:white; margin-top:50px;">
+
+<div class="container py-5">
+
+<div class="row">
+
+<div class="col-md-4">
+<h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">EduClasses</h5>
+<p>
+Learn programming, web development and IT skills with expert teachers.
+Our mission is to help students build strong careers in technology.
+</p>
+</div>
+
+<div class="col-md-3">
+<h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">Quick Links</h5>
+
+<ul style="list-style:none; padding:0;">
+<li><a href="index.html" style="color:white;text-decoration:none;">Home</a></li>
+<li><a href="#" style="color:white;text-decoration:none;">Courses</a></li>
+<li><a href="batch.html" style="color:white;text-decoration:none;">Batch Schedule</a></li>
+<li><a href="Contact.html" style="color:white;text-decoration:none;">Contact</a></li>
+<li><a href="login.html" style="color:white;text-decoration:none;">Login</a></li>
+</ul>
+
+</div>
+
+<div class="col-md-2">
+<h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">Address</h5>
+<p>
+EduClasses Institute<br>
+IT Park Road<br>
+Pune, Maharashtra<br>
+India - 440001
+</p>
+</div>
+
+<div class="col-md-3">
+<h5 class="fw-bold text-uppercase mb-3 text-decoration-underline ">Location</h5>
+
+<iframe
+src="https://www.google.com/maps?q=SEED%20Infotech%20Erandwane%20Pune&output=embed"
+width="100%"
+height="180"
+style="border-radius:8px;border:0;"
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+</div>
+
+<div style="background:royalblue;text-align:center;padding:15px;">
+© 2026 EduClasses. All Rights Reserved.
+</div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+<script src="assets/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Admin Dashboard | EduClasses</title>
+
+<link rel="icon" href="assets/images/icon.png">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<script src="assets/js/api-config.js"></script>
+
+<style>
+body{ background:#f4f6f9; }
+.dashboard-header{
+background:navy;
+color:white;
+padding:20px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+.badge-new{ background:#0d6efd; }
+.badge-contacted{ background:#fd7e14; }
+.badge-closed{ background:#198754; }
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard-header">
+<h4>EduClasses Admin Dashboard</h4>
+<a href="#" onclick="adminLogout()" class="btn btn-light fw-bold">Logout</a>
+</div>
+
+<div class="container mt-5">
+
+<ul class="nav nav-tabs mb-4">
+<li class="nav-item">
+<button type="button" class="nav-link active" id="studentsTabBtn" onclick="showAdminTab('students')">Students</button>
+</li>
+<li class="nav-item">
+<button type="button" class="nav-link" id="enquiriesTabBtn" onclick="showAdminTab('enquiries')">Enquiries</button>
+</li>
+<li class="nav-item">
+<button type="button" class="nav-link" id="batchesTabBtn" onclick="showAdminTab('batches')">Batch Schedule</button>
+</li>
+</ul>
+
+<div id="studentsTab">
+<h5 class="mb-3">Registered Students</h5>
+<div class="table-responsive">
+<table class="table table-striped bg-white">
+<thead>
+<tr><th>Name</th><th>Email</th><th>Phone</th><th>Course</th><th>Joined</th></tr>
+</thead>
+<tbody id="studentsBody">
+<tr><td colspan="5">Loading...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="enquiriesTab" class="d-none">
+<h5 class="mb-3">Contact Form Enquiries</h5>
+<div class="table-responsive">
+<table class="table table-striped bg-white">
+<thead>
+<tr><th>Name</th><th>Email</th><th>Phone</th><th>Branch</th><th>Course</th><th>Message</th><th>Status</th></tr>
+</thead>
+<tbody id="enquiriesBody">
+<tr><td colspan="7">Loading...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="batchesTab" class="d-none">
+<h5 class="mb-3">Add New Batch</h5>
+<form id="addBatchForm" class="row g-2 bg-white p-3 rounded shadow-sm mb-4">
+  <div class="col-md-3">
+    <input type="text" class="form-control" id="batchCourseName" placeholder="Course Name" required>
+  </div>
+  <div class="col-md-2">
+    <input type="text" class="form-control" id="batchStartDate" placeholder="Start Date (e.g. 01 Apr'26)" required>
+  </div>
+  <div class="col-md-2">
+    <input type="text" class="form-control" id="batchEndDate" placeholder="End Date (e.g. 30 Sep'26)" required>
+  </div>
+  <div class="col-md-2">
+    <input type="text" class="form-control" id="batchTimings" placeholder="Timings (e.g. 09:00 - 17:00)" required>
+  </div>
+  <div class="col-md-1">
+    <input type="text" class="form-control" id="batchDays" placeholder="Days" required>
+  </div>
+  <div class="col-md-1">
+    <input type="text" class="form-control" id="batchLocation" placeholder="Location" required>
+  </div>
+  <div class="col-md-1">
+    <button type="submit" class="btn btn-primary w-100">Add</button>
+  </div>
+  <div class="col-12">
+    <small id="addBatchMsg" class="text-danger"></small>
+  </div>
+</form>
+
+<h5 class="mb-3">Upcoming Batches</h5>
+<div class="table-responsive">
+<table class="table table-striped bg-white">
+<thead>
+<tr><th>Batch Name</th><th>Start Date</th><th>End Date</th><th>Timings</th><th>Days</th><th>Location</th><th></th></tr>
+</thead>
+<tbody id="batchesBody">
+<tr><td colspan="7">Loading...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<script>
+
+function adminLogout(){
+  localStorage.removeItem("eduAdminToken");
+  window.location = "admin-login.html";
+}
+
+function getAdminToken(){
+  const token = localStorage.getItem("eduAdminToken");
+  if(!token){
+    window.location = "admin-login.html";
+  }
+  return token;
+}
+
+function showAdminTab(tab){
+  const tabs = {
+    students: { panel: document.getElementById("studentsTab"), btn: document.getElementById("studentsTabBtn") },
+    enquiries: { panel: document.getElementById("enquiriesTab"), btn: document.getElementById("enquiriesTabBtn") },
+    batches: { panel: document.getElementById("batchesTab"), btn: document.getElementById("batchesTabBtn") },
+  };
+
+  Object.keys(tabs).forEach((key) => {
+    if(key === tab){
+      tabs[key].panel.classList.remove("d-none");
+      tabs[key].btn.classList.add("active");
+    } else {
+      tabs[key].panel.classList.add("d-none");
+      tabs[key].btn.classList.remove("active");
+    }
+  });
+
+  if(tab === "batches"){
+    loadBatches();
+  }
+}
+
+async function loadStudents(){
+  const token = getAdminToken();
+  const tbody = document.getElementById("studentsBody");
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/admin/students`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if(res.status === 401 || res.status === 403){
+      adminLogout();
+      return;
+    }
+
+    const data = await res.json();
+
+    if(!data.students || data.students.length === 0){
+      tbody.innerHTML = `<tr><td colspan="5">No students registered yet.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = data.students.map(s => `
+      <tr>
+        <td>${s.fullName}</td>
+        <td>${s.email}</td>
+        <td>${s.phone || "-"}</td>
+        <td>${s.course || "-"}</td>
+        <td>${new Date(s.createdAt).toLocaleDateString()}</td>
+      </tr>
+    `).join("");
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="5">Could not reach the server. Is the backend running?</td></tr>`;
+  }
+}
+
+async function loadEnquiries(){
+  const token = getAdminToken();
+  const tbody = document.getElementById("enquiriesBody");
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/admin/enquiries`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if(res.status === 401 || res.status === 403){
+      adminLogout();
+      return;
+    }
+
+    const data = await res.json();
+
+    if(!data.enquiries || data.enquiries.length === 0){
+      tbody.innerHTML = `<tr><td colspan="7">No enquiries yet.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = data.enquiries.map(e => `
+      <tr>
+        <td>${e.firstName} ${e.lastName}</td>
+        <td>${e.email}</td>
+        <td>${e.phone}</td>
+        <td>${e.branch}</td>
+        <td>${e.course || "-"}</td>
+        <td>${e.message || "-"}</td>
+        <td><span class="badge badge-${e.status}">${e.status}</span></td>
+      </tr>
+    `).join("");
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="7">Could not reach the server. Is the backend running?</td></tr>`;
+  }
+}
+
+async function loadBatches(){
+  const token = getAdminToken();
+  const tbody = document.getElementById("batchesBody");
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/admin/batches`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if(res.status === 401 || res.status === 403){
+      adminLogout();
+      return;
+    }
+
+    const data = await res.json();
+
+    if(!data.batches || data.batches.length === 0){
+      tbody.innerHTML = `<tr><td colspan="7">No batches added yet.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = data.batches.map(b => `
+      <tr>
+        <td>${b.courseName}</td>
+        <td>${b.startDate}</td>
+        <td>${b.endDate}</td>
+        <td>${b.timings}</td>
+        <td>${b.days}</td>
+        <td>${b.location}</td>
+        <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBatch('${b._id}')">Delete</button></td>
+      </tr>
+    `).join("");
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="7">Could not reach the server. Is the backend running?</td></tr>`;
+  }
+}
+
+async function deleteBatch(id){
+  const token = getAdminToken();
+  if(!confirm("Delete this batch?")) return;
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/admin/batches/${id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if(res.status === 401 || res.status === 403){
+      adminLogout();
+      return;
+    }
+
+    loadBatches();
+  } catch (err) {
+    alert("Could not reach the server. Is the backend running?");
+  }
+}
+
+document.getElementById("addBatchForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+  const token = getAdminToken();
+  const msgEl = document.getElementById("addBatchMsg");
+  msgEl.textContent = "";
+
+  const payload = {
+    courseName: document.getElementById("batchCourseName").value.trim(),
+    startDate: document.getElementById("batchStartDate").value.trim(),
+    endDate: document.getElementById("batchEndDate").value.trim(),
+    timings: document.getElementById("batchTimings").value.trim(),
+    days: document.getElementById("batchDays").value.trim(),
+    location: document.getElementById("batchLocation").value.trim(),
+  };
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/admin/batches`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+
+    if(res.status === 401 || res.status === 403){
+      adminLogout();
+      return;
+    }
+
+    if(!res.ok){
+      msgEl.textContent = data.message || "Could not add batch.";
+      return;
+    }
+
+    document.getElementById("addBatchForm").reset();
+    loadBatches();
+  } catch (err) {
+    msgEl.textContent = "Could not reach the server. Is the backend running?";
+  }
+});
+
+loadStudents();
+loadEnquiries();
+
+</script>
+
+</body>
+</html>

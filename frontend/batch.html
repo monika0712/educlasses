@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batch Schedule | EduClasses</title>
+<link rel="icon" href="assets/images/icon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="assets/js/api-config.js"></script>
+<style>
+body {
+    margin:0;
+    padding-top:60px;
+    background:whitesmoke;
+}
+
+/* Navbar */
+.navbar-brand img { height: 50px; }
+
+/* Batch Header */
+.batch-header {
+    background-image: url('assets/images/bg1.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+.batch-header h1 { font-size: 60px; font-weight: bold; }
+.batch-header p { font-size: 24px; margin-top: 10px; }
+
+/* Table */
+.table-responsive { max-height: 500px; overflow-y: auto; }
+.table-responsive thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    z-index: 2;
+}
+
+/* Footer */
+footer { background: navy; color: white; }
+footer a { color: white; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top px-5" style="background:blue;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/images/logo.png" alt="EduClasses Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="menu">
+      <ul class="navbar-nav gap-3 fw-bold">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="Courses.html">Courses</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Batch Schedule</a></li>
+        <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+        <li class="nav-item dropdown">
+        <a class="btn btn-info text-dark fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
+        <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="login.html">Student Login</a></li>
+        <li><a class="dropdown-item" href="admin-login.html">Admin Login</a></li>
+        </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="batch-header">
+  <h1>Batch Schedule</h1>
+  <p>Check upcoming batches and timings for your favorite courses</p>
+</section>
+
+<!-- BATCH TABLE -->
+<section class="container py-5">
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Batch Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Timings</th>
+          <th>Days</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody id="batchesBody">
+        <tr><td colspan="6">Loading upcoming batches...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-4">
+        <h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">EduClasses</h5>
+        <p>Learn programming, web development and IT skills with expert teachers. Our mission is to help students build strong careers in technology.</p>
+      </div>
+      <div class="col-md-3">
+        <h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Courses.html">Courses</a></li>
+          <li><a href="#">Batch Schedule</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">Address</h5>
+        <p>EduClasses Institute<br>IT Park Road<br>Pune, Maharashtra<br>India - 440001</p>
+      </div>
+      <div class="col-md-3">
+        <h5 class="fw-bold text-uppercase mb-3 text-decoration-underline">Location</h5>
+        <iframe src="https://www.google.com/maps?q=SEED%20Infotech%20Erandwane%20Pune&output=embed"
+          width="100%" height="180" style="border-radius:8px;border:0;" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div style="background:royalblue;text-align:center;padding:15px;">
+    © 2026 EduClasses. All Rights Reserved.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+async function loadBatchSchedule(){
+  const tbody = document.getElementById("batchesBody");
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/batches`);
+    const data = await res.json();
+
+    if(!data.batches || data.batches.length === 0){
+      tbody.innerHTML = `<tr><td colspan="6">No upcoming batches announced yet. Please check back soon.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = data.batches.map(b => `
+      <tr>
+        <td>${b.courseName}</td>
+        <td>${b.startDate}</td>
+        <td>${b.endDate}</td>
+        <td>${b.timings}</td>
+        <td>${b.days}</td>
+        <td>${b.location}</td>
+      </tr>
+    `).join("");
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="6">Could not reach the server. Is the backend running?</td></tr>`;
+  }
+}
+
+loadBatchSchedule();
+</script>
+</body>
+</html>
