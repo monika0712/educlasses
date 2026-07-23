@@ -6,4 +6,4 @@
 // While testing locally with the backend running, keep it as
 // "http://localhost:5000"
 // ============================================================
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://educlasses-backend.onrender.com";
