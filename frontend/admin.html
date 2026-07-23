@@ -79,8 +79,9 @@ align-items:center;
 </div>
 
 <div id="batchesTab" class="d-none">
-<h5 class="mb-3">Add New Batch</h5>
+<h5 class="mb-3" id="batchFormTitle">Add New Batch</h5>
 <form id="addBatchForm" class="row g-2 bg-white p-3 rounded shadow-sm mb-4">
+  <input type="hidden" id="batchEditId" value="">
   <div class="col-md-3">
     <input type="text" class="form-control" id="batchCourseName" placeholder="Course Name" required>
   </div>
@@ -96,11 +97,21 @@ align-items:center;
   <div class="col-md-1">
     <input type="text" class="form-control" id="batchDays" placeholder="Days" required>
   </div>
-  <div class="col-md-1">
+  <div class="col-md-2">
     <input type="text" class="form-control" id="batchLocation" placeholder="Location" required>
   </div>
+  <div class="col-md-2">
+    <select class="form-select" id="batchStatus">
+      <option value="Upcoming">Upcoming</option>
+      <option value="Ongoing">Ongoing</option>
+      <option value="Completed">Completed</option>
+    </select>
+  </div>
   <div class="col-md-1">
-    <button type="submit" class="btn btn-primary w-100">Add</button>
+    <button type="submit" class="btn btn-primary w-100" id="batchSubmitBtn">Add</button>
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-outline-secondary w-100 d-none" id="batchCancelBtn" onclick="resetBatchForm()">Cancel</button>
   </div>
   <div class="col-12">
     <small id="addBatchMsg" class="text-danger"></small>
@@ -111,10 +122,10 @@ align-items:center;
 <div class="table-responsive">
 <table class="table table-striped bg-white">
 <thead>
-<tr><th>Batch Name</th><th>Start Date</th><th>End Date</th><th>Timings</th><th>Days</th><th>Location</th><th></th></tr>
+<tr><th>Batch Name</th><th>Start Date</th><th>End Date</th><th>Timings</th><th>Days</th><th>Location</th><th>Status</th><th></th></tr>
 </thead>
 <tbody id="batchesBody">
-<tr><td colspan="7">Loading...</td></tr>
+<tr><td colspan="8">Loading...</td></tr>
 </tbody>
 </table>
 </div>
@@ -223,12 +234,51 @@ async function loadEnquiries(){
         <td>${e.branch}</td>
         <td>${e.course || "-"}</td>
         <td>${e.message || "-"}</td>
-        <td><span class="badge badge-${e.status}">${e.status}</span></td>
+        <td>
+          <select class="form-select form-select-sm" onchange="updateEnquiryStatus('${e._id}', this.value)">
+            <option value="new" ${e.status === "new" ? "selected" : ""}>New</option>
+            <option value="contacted" ${e.status === "contacted" ? "selected" : ""}>Contacted</option>
+            <option value="closed" ${e.status === "closed" ? "selected" : ""}>Closed</option>
+          </select>
+        </td>
       </tr>
     `).join("");
   } catch (err) {
     tbody.innerHTML = `<tr><td colspan="7">Could not reach the server. Is the backend running?</td></tr>`;
   }
+}
+
+async function updateEnquiryStatus(id, status){
+  const token = getAdminToken();
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/admin/enquiries/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ status }),
+    });
+
+    if(res.status === 401 || res.status === 403){
+      adminLogout();
+      return;
+    }
+
+    if(!res.ok){
+      alert("Could not update enquiry status.");
+      loadEnquiries();
+    }
+  } catch (err) {
+    alert("Could not reach the server. Is the backend running?");
+    loadEnquiries();
+  }
+}
+
+function statusBadgeClass(status){
+  if(status === "Ongoing") return "bg-warning text-dark";
+  if(status === "Completed") return "bg-secondary";
+  return "bg-success";
 }
 
 async function loadBatches(){
@@ -246,9 +296,10 @@ async function loadBatches(){
     }
 
     const data = await res.json();
+    window.__batchesCache = data.batches || [];
 
     if(!data.batches || data.batches.length === 0){
-      tbody.innerHTML = `<tr><td colspan="7">No batches added yet.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="8">No batches added yet.</td></tr>`;
       return;
     }
 
@@ -260,12 +311,45 @@ async function loadBatches(){
         <td>${b.timings}</td>
         <td>${b.days}</td>
         <td>${b.location}</td>
-        <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBatch('${b._id}')">Delete</button></td>
+        <td><span class="badge ${statusBadgeClass(b.status)}">${b.status || "Upcoming"}</span></td>
+        <td>
+          <button class="btn btn-sm btn-outline-primary me-1" onclick="editBatch('${b._id}')">Edit</button>
+          <button class="btn btn-sm btn-outline-danger" onclick="deleteBatch('${b._id}')">Delete</button>
+        </td>
       </tr>
     `).join("");
   } catch (err) {
-    tbody.innerHTML = `<tr><td colspan="7">Could not reach the server. Is the backend running?</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="8">Could not reach the server. Is the backend running?</td></tr>`;
   }
+}
+
+function editBatch(id){
+  const batch = (window.__batchesCache || []).find(b => b._id === id);
+  if(!batch) return;
+
+  document.getElementById("batchEditId").value = batch._id;
+  document.getElementById("batchCourseName").value = batch.courseName;
+  document.getElementById("batchStartDate").value = batch.startDate;
+  document.getElementById("batchEndDate").value = batch.endDate;
+  document.getElementById("batchTimings").value = batch.timings;
+  document.getElementById("batchDays").value = batch.days;
+  document.getElementById("batchLocation").value = batch.location;
+  document.getElementById("batchStatus").value = batch.status || "Upcoming";
+
+  document.getElementById("batchFormTitle").textContent = "Edit Batch";
+  document.getElementById("batchSubmitBtn").textContent = "Update";
+  document.getElementById("batchCancelBtn").classList.remove("d-none");
+
+  document.getElementById("addBatchForm").scrollIntoView({ behavior: "smooth" });
+}
+
+function resetBatchForm(){
+  document.getElementById("addBatchForm").reset();
+  document.getElementById("batchEditId").value = "";
+  document.getElementById("batchFormTitle").textContent = "Add New Batch";
+  document.getElementById("batchSubmitBtn").textContent = "Add";
+  document.getElementById("batchCancelBtn").classList.add("d-none");
+  document.getElementById("addBatchMsg").textContent = "";
 }
 
 async function deleteBatch(id){
@@ -295,6 +379,8 @@ document.getElementById("addBatchForm").addEventListener("submit", async functio
   const msgEl = document.getElementById("addBatchMsg");
   msgEl.textContent = "";
 
+  const editId = document.getElementById("batchEditId").value;
+
   const payload = {
     courseName: document.getElementById("batchCourseName").value.trim(),
     startDate: document.getElementById("batchStartDate").value.trim(),
@@ -302,11 +388,15 @@ document.getElementById("addBatchForm").addEventListener("submit", async functio
     timings: document.getElementById("batchTimings").value.trim(),
     days: document.getElementById("batchDays").value.trim(),
     location: document.getElementById("batchLocation").value.trim(),
+    status: document.getElementById("batchStatus").value,
   };
 
+  const url = editId ? `${API_BASE_URL}/api/admin/batches/${editId}` : `${API_BASE_URL}/api/admin/batches`;
+  const method = editId ? "PUT" : "POST";
+
   try {
-    const res = await fetch(`${API_BASE_URL}/api/admin/batches`, {
-      method: "POST",
+    const res = await fetch(url, {
+      method,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -322,11 +412,11 @@ document.getElementById("addBatchForm").addEventListener("submit", async functio
     }
 
     if(!res.ok){
-      msgEl.textContent = data.message || "Could not add batch.";
+      msgEl.textContent = data.message || "Could not save batch.";
       return;
     }
 
-    document.getElementById("addBatchForm").reset();
+    resetBatchForm();
     loadBatches();
   } catch (err) {
     msgEl.textContent = "Could not reach the server. Is the backend running?";
