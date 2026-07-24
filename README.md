@@ -10,9 +10,9 @@
 
 <br/><br/>
 
-[![Last Commit](https://img.shields.io/github/last-commit/your-username/educlasses?style=for-the-badge&color=1E40AF)](https://github.com/your-username/educlasses/commits/main)
-[![Repo Size](https://img.shields.io/github/repo-size/your-username/educlasses?style=for-the-badge&color=2563EB)](https://github.com/your-username/educlasses)
-[![Stars](https://img.shields.io/github/stars/your-username/educlasses?style=for-the-badge&color=ffd23f)](https://github.com/your-username/educlasses/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/monika0712/educlasses?style=for-the-badge&color=1E40AF)](https://github.com/monika0712/educlasses/commits/main)
+[![Repo Size](https://img.shields.io/github/repo-size/monika0712/educlasses?style=for-the-badge&color=2563EB)](https://github.com/monika0712/educlasses)
+[![Stars](https://img.shields.io/github/stars/monika0712/educlasses?style=for-the-badge&color=ffd23f)](https://github.com/monika0712/educlasses/stargazers)
 [![License](https://img.shields.io/badge/License-MIT-2563EB?style=for-the-badge)](#-contact)
 
 <br/>
@@ -376,7 +376,7 @@ educlasses/
 
 ### 1️⃣ Clone the repo
 ```bash
-git clone https://github.com/your-username/educlasses.git
+git clone https://github.com/monika0712/educlasses.git
 cd educlasses
 ```
 
@@ -615,7 +615,7 @@ Contributions, issues, and feature requests are welcome!
 **Your Name**
 
 [![Email](https://img.shields.io/badge/Email-your.email%40example.com-2563EB?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your.email@example.com)
-[![GitHub](https://img.shields.io/badge/GitHub-your--username-181717?style=for-the-badge&logo=github)](https://github.com/your-username)
+[![GitHub](https://img.shields.io/badge/GitHub-monika0712-181717?style=for-the-badge&logo=github)](https://github.com/monika0712)
 
 ### ⭐ If this project helped you, consider giving it a star — it really helps!
 
