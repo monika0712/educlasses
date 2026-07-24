@@ -28,49 +28,18 @@
 
 </div>
 
-
-
-
 <div align="center">
 
 ### 📊 At a Glance
 
 <table width="100%">
 <tr>
-<td align="center" width="16%">
-📚 <b>Courses</b><br/>
-<h3>9</h3>
-</td>
-
-<td align="center" width="16%">
-🖥️ <b>Frontend Pages</b><br/>
-<h3>8</h3>
-</td>
-
-<td align="center" width="16%">
-📡 <b>API Endpoints</b><br/>
-<h3>12</h3>
-</td>
-
-<td align="center" width="16%">
-🗄️ <b>Collections</b><br/>
-<h3>4</h3>
-</td>
-
-<td align="center" width="16%">
-⚙️ <b>Auth</b><br/>
-<i>JWT + bcrypt</i>
-</td>
-
-<td align="center" width="16%">
-🚀 <b>Live Demo</b><br/>
-<a href="https://educlasses.netlify.app/">View App</a>
-</td>
+<td align="center" width="20%">📚 <b>Courses</b><br/><h3>9</h3></td>
+<td align="center" width="20%">🖥️ <b>Frontend Pages</b><br/><h3>8</h3></td>
+<td align="center" width="20%">📡 <b>API Endpoints</b><br/><h3>12</h3></td>
+<td align="center" width="20%">🗄️ <b>Collections</b><br/><h3>4</h3></td>
+<td align="center" width="20%">⚙️ <b>Auth</b><br/><i>JWT + bcrypt</i></td>
 </tr>
-
-<tr>
-
-
 </table>
 
 </div>
