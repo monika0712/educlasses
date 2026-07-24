@@ -135,6 +135,28 @@ align-items:center;
 
 <script>
 
+function formatDateDDMMYY(dateStr){
+  const d = new Date(dateStr);
+  if(isNaN(d.getTime())) return "-";
+  const dd = String(d.getDate()).padStart(2, "0");
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const yy = String(d.getFullYear()).slice(-2);
+  return `${dd}/${mm}/${yy}`;
+}
+
+function parseBatchDate(str){
+  if(!str) return new Date(0);
+  const months = { jan:0, feb:1, mar:2, apr:3, may:4, jun:5, jul:6, aug:7, sep:8, oct:9, nov:10, dec:11 };
+  const match = String(str).trim().match(/(\d{1,2})\s*([A-Za-z]+)\s*'?\s*(\d{2,4})/);
+  if(!match) return new Date(0);
+  const day = parseInt(match[1], 10);
+  const monKey = match[2].toLowerCase().slice(0, 3);
+  const month = months[monKey] !== undefined ? months[monKey] : 0;
+  let year = parseInt(match[3], 10);
+  if(year < 100) year += 2000;
+  return new Date(year, month, day);
+}
+
 function adminLogout(){
   localStorage.removeItem("eduAdminToken");
   window.location = "admin-login.html";
@@ -197,7 +219,7 @@ async function loadStudents(){
         <td>${s.email}</td>
         <td>${s.phone || "-"}</td>
         <td>${s.course || "-"}</td>
-        <td>${new Date(s.createdAt).toLocaleDateString()}</td>
+        <td>${formatDateDDMMYY(s.createdAt)}</td>
       </tr>
     `).join("");
   } catch (err) {
@@ -296,14 +318,15 @@ async function loadBatches(){
     }
 
     const data = await res.json();
-    window.__batchesCache = data.batches || [];
+    const sortedBatches = (data.batches || []).slice().sort((a, b) => parseBatchDate(a.startDate) - parseBatchDate(b.startDate));
+    window.__batchesCache = sortedBatches;
 
-    if(!data.batches || data.batches.length === 0){
+    if(sortedBatches.length === 0){
       tbody.innerHTML = `<tr><td colspan="8">No batches added yet.</td></tr>`;
       return;
     }
 
-    tbody.innerHTML = data.batches.map(b => `
+    tbody.innerHTML = sortedBatches.map(b => `
       <tr>
         <td>${b.courseName}</td>
         <td>${b.startDate}</td>

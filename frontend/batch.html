@@ -136,18 +136,33 @@ footer a:hover { text-decoration: underline; }
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+function parseBatchDate(str){
+  if(!str) return new Date(0);
+  const months = { jan:0, feb:1, mar:2, apr:3, may:4, jun:5, jul:6, aug:7, sep:8, oct:9, nov:10, dec:11 };
+  const match = String(str).trim().match(/(\d{1,2})\s*([A-Za-z]+)\s*'?\s*(\d{2,4})/);
+  if(!match) return new Date(0);
+  const day = parseInt(match[1], 10);
+  const monKey = match[2].toLowerCase().slice(0, 3);
+  const month = months[monKey] !== undefined ? months[monKey] : 0;
+  let year = parseInt(match[3], 10);
+  if(year < 100) year += 2000;
+  return new Date(year, month, day);
+}
+
 async function loadBatchSchedule(){
   const tbody = document.getElementById("batchesBody");
   try {
     const res = await fetch(`${API_BASE_URL}/api/batches`);
     const data = await res.json();
 
-    if(!data.batches || data.batches.length === 0){
+    const sortedBatches = (data.batches || []).slice().sort((a, b) => parseBatchDate(a.startDate) - parseBatchDate(b.startDate));
+
+    if(sortedBatches.length === 0){
       tbody.innerHTML = `<tr><td colspan="6">No upcoming batches announced yet. Please check back soon.</td></tr>`;
       return;
     }
 
-    tbody.innerHTML = data.batches.map(b => `
+    tbody.innerHTML = sortedBatches.map(b => `
       <tr>
         <td>${b.courseName}</td>
         <td>${b.startDate}</td>
