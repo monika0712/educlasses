@@ -1,172 +1,585 @@
-# EduClasses — Full Stack Project
+<div align="center">
 
-Your site is a full-stack project:
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563EB,100:1E40AF&height=220&section=header&text=EduClasses&fontSize=62&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Institute%20Website%20%2B%20Real%20Full%20Stack%20Backend&descAlignY=55&descSize=20" width="100%"/>
 
-- **frontend/** — the original HTML/CSS/JS pages (home, courses, batch, contact, login, student dashboard) plus an admin panel, connected to a live backend.
-- **backend/** — a Node.js + Express + MongoDB API that provides real student accounts, contact-form storage, and a real admin account.
+<img src="frontend/assets/images/logo.png" alt="EduClasses logo" width="160" />
 
-## What changed
+<a href="#">
+  <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=20&pause=1000&color=2563EB&center=true&vCenter=true&width=650&lines=Real+student+accounts+%E2%80%94+no+more+hardcoded+logins;9+courses%2C+live+batch+schedule%2C+contact+form;Full+admin+dashboard+for+students%2C+batches+%26+enquiries;MERN+stack+%E2%80%94+MongoDB%2C+Express%2C+plain+JS%2C+Node.js" alt="Typing SVG" />
+</a>
 
-| Feature | Before | Now |
-|---|---|---|
-| Student login | Hardcoded `student` / `1234` in JS | Real accounts stored in MongoDB, passwords hashed with bcrypt, JWT sessions |
-| Student signup | Didn't exist | "Sign Up" tab on `login.html` |
-| Contact form | Just showed a fake "thank you" message | Real POST to backend, saved in MongoDB as an enquiry |
-| Admin | Didn't exist | `admin-login.html` + `admin.html` to view all students & enquiries, backed by a real `Admin` account in MongoDB |
-| Admin access | N/A | "Login" button in the navbar is now a dropdown: **Student Login** / **Admin Login** |
+<br/><br/>
 
-Nothing about the visual design was changed — same pages, same styling, same images. Only the logic underneath is real.
+[![Last Commit](https://img.shields.io/github/last-commit/your-username/educlasses?style=for-the-badge&color=1E40AF)](https://github.com/your-username/educlasses/commits/main)
+[![Repo Size](https://img.shields.io/github/repo-size/your-username/educlasses?style=for-the-badge&color=2563EB)](https://github.com/your-username/educlasses)
+[![Stars](https://img.shields.io/github/stars/your-username/educlasses?style=for-the-badge&color=ffd23f)](https://github.com/your-username/educlasses/stargazers)
+[![License](https://img.shields.io/badge/License-MIT-2563EB?style=for-the-badge)](#-contact)
+
+<br/>
+
+<img src="https://skillicons.dev/icons?i=html,css,js,bootstrap,nodejs,express,mongodb,git&theme=light" />
+
+</div>
+
+<br/>
+
+<div align="center">
+
+### 📊 At a Glance
+
+<table width="100%">
+<tr>
+<td align="center" width="20%">📚 <b>Courses</b><br/><h3>9</h3></td>
+<td align="center" width="20%">🖥️ <b>Frontend Pages</b><br/><h3>8</h3></td>
+<td align="center" width="20%">📡 <b>API Endpoints</b><br/><h3>12</h3></td>
+<td align="center" width="20%">🗄️ <b>Collections</b><br/><h3>4</h3></td>
+<td align="center" width="20%">⚙️ <b>Auth</b><br/><i>JWT + bcrypt</i></td>
+</tr>
+</table>
+
+</div>
 
 ---
 
-## 1. Run the backend
+## 📖 Table of Contents
 
+**🧭 Getting to know it**
+
+&nbsp;&nbsp;📌 [Overview](#-overview) &nbsp;·&nbsp; 📸 [Screenshots](#-screenshots) &nbsp;·&nbsp; ✨ [Features](#-features) &nbsp;·&nbsp; 🔄 [How It Works](#-how-it-works)
+
+**🛠️ Building it**
+
+&nbsp;&nbsp;🧰 [Tech Stack](#-tech-stack) &nbsp;·&nbsp; 📁 [Project Structure](#-project-structure) &nbsp;·&nbsp; 🚀 [Getting Started](#-getting-started) &nbsp;·&nbsp; 📡 [API Reference](#-api-reference)
+
+**🌍 Beyond the code**
+
+&nbsp;&nbsp;🔍 [Checking Your Data](#-checking-your-data) &nbsp;·&nbsp; ☁️ [Deployment](#️-deployment) &nbsp;·&nbsp; 🛠 [Skills Demonstrated](#-skills-demonstrated) &nbsp;·&nbsp; 🗺️ [Roadmap](#️-roadmap) &nbsp;·&nbsp; 🤝 [Contributing](#-contributing) &nbsp;·&nbsp; 📬 [Contact](#-contact)
+
+---
+
+## 📌 Overview
+
+> **EduClasses** is a training-institute website — course catalog, batch schedule, and a contact form — rebuilt with a real backend underneath it.
+
+The original site ran on hardcoded credentials in JavaScript and a fake "thank you" contact form. This version keeps the **exact same look, pages, and styling**, but every interaction is now real: student sign-up/login is backed by **MongoDB + JWT + bcrypt**, the contact form saves genuine enquiries, and a full **admin dashboard** manages students, batches, and enquiries live from the database.
+
+Built as a full-stack project covering static **HTML/CSS/JS** on the frontend and a **Node.js + Express + MongoDB** REST API on the backend.
+
+<div align="right">
+
+[⬆ back to top](#-table-of-contents)
+
+</div>
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+<table width="100%">
+<tr>
+<td align="center" width="50%"><img src="screenshots/home-hero.png" alt="Home page hero" width="100%" /><br/><sub><b>Hero</b> — banner, quick links & call-to-action</sub></td>
+<td align="center" width="50%"><img src="screenshots/home-courses.png" alt="Home page courses preview" width="100%" /><br/><sub><b>Courses Preview</b> — featured courses on the landing page</sub></td>
+</tr>
+</table>
+
+### 📚 Courses
+
+<table width="100%">
+<tr>
+<td align="center" width="50%"><img src="screenshots/courses.png" alt="Courses grid" width="100%" /><br/><sub><b>Course Catalog</b> — 9 courses with syllabus & enroll actions</sub></td>
+<td align="center" width="50%"><img src="screenshots/courses-detail.png" alt="Course detail view" width="100%" /><br/><sub><b>Course Details</b></sub></td>
+</tr>
+</table>
+
+### 🗓️ Batch Schedule
+
+<p align="center"><img src="screenshots/batch-schedule.png" alt="Batch schedule page" width="100%" /></p>
+<p align="center"><i>Live batch timings pulled from the <code>Batch</code> collection — no more static tables to edit by hand.</i></p>
+
+### ✉️ Contact Us
+
+<p align="center"><img src="screenshots/contact.png" alt="Contact page" width="100%" /></p>
+<p align="center"><i>Submits straight to MongoDB as a real <code>Enquiry</code> document instead of just showing a fake success message.</i></p>
+
+### 🔐 Student Login & Sign Up
+
+<table width="100%">
+<tr>
+<td align="center" width="50%"><img src="screenshots/login.png" alt="Student login tab" width="100%" /><br/><sub><b>Login</b></sub></td>
+<td align="center" width="50%"><img src="screenshots/signup.png" alt="Student sign up tab" width="100%" /><br/><sub><b>Sign Up</b></sub></td>
+</tr>
+</table>
+
+<p align="center"><i>The "Login" dropdown in the navbar splits into <b>Student Login</b> and <b>Admin Login</b> — both hit real endpoints.</i></p>
+
+### 👤 Student Dashboard
+
+<p align="center"><img src="screenshots/student-dashboard.png" alt="Student dashboard" width="100%" /></p>
+<p align="center"><i>Profile pulled live from MongoDB right after sign-up — no page reload, no dummy data.</i></p>
+
+### 🛡️ Admin Panel
+
+<table width="100%">
+<tr>
+<td align="center" width="50%"><img src="screenshots/admin-students.png" alt="Admin - manage students" width="100%" /><br/><sub><b>Manage Students</b> — every registered student, pulled live</sub></td>
+<td align="center" width="50%"><img src="screenshots/admin-batches.png" alt="Admin - manage batches" width="100%" /><br/><sub><b>Manage Batches</b> — add / edit / delete batch schedules</sub></td>
+</tr>
+<tr>
+<td align="center" width="50%"><img src="screenshots/admin-enquiries.png" alt="Admin - manage enquiries" width="100%" /><br/><sub><b>Manage Enquiries</b> — track status: new / contacted / closed</sub></td>
+<td align="center" width="50%"><img src="screenshots/admin-login.png" alt="Admin login" width="100%" /><br/><sub><b>Admin Login</b></sub></td>
+</tr>
+</table>
+
+<div align="right">
+
+[⬆ back to top](#-table-of-contents)
+
+</div>
+
+---
+
+## ✨ Features
+
+<table width="100%">
+<tr><td>
+
+#### 🔐 Authentication & Accounts <img src="https://img.shields.io/badge/-3-2563EB?style=flat-square"/>
+
+</td></tr>
+<tr><td>✅ &nbsp; <b>JWT-based</b> student register / login, sessions kept in <code>localStorage</code></td></tr>
+<tr><td>✅ &nbsp; Passwords hashed with <b>bcrypt</b> for both students and admin — never stored in plain text</td></tr>
+<tr><td>✅ &nbsp; Separate <b>Admin Login</b>, seeded from environment variables, not a public sign-up form</td></tr>
+
+<tr><td>
+
+#### 📚 Course Catalog & Batches <img src="https://img.shields.io/badge/-2-2563EB?style=flat-square"/>
+
+</td></tr>
+<tr><td>✅ &nbsp; <b>9 professional courses</b> — Web Dev, Java, Python, Data Analytics, Data Science, .NET, UI/UX, Cybersecurity, AI — each with a downloadable syllabus PDF</td></tr>
+<tr><td>✅ &nbsp; <b>Batch Schedule</b> page reads live from the <code>Batch</code> collection instead of a hardcoded table</td></tr>
+
+<tr><td>
+
+#### ✉️ Contact / Enquiry System <img src="https://img.shields.io/badge/-2-3B5FE0?style=flat-square"/>
+
+</td></tr>
+<tr><td>✅ &nbsp; Contact form saves a real <code>Enquiry</code> document (name, email, phone, branch, course, message)</td></tr>
+<tr><td>✅ &nbsp; Admin can track each enquiry's status: <code>new</code> → <code>contacted</code> → <code>closed</code></td></tr>
+
+<tr><td>
+
+#### 🛡️ Admin Dashboard <img src="https://img.shields.io/badge/-3-3B5FE0?style=flat-square"/>
+
+</td></tr>
+<tr><td>✅ &nbsp; <b>Manage Students</b> — view every registered account (passwords excluded from the response)</td></tr>
+<tr><td>✅ &nbsp; <b>Manage Batches</b> — full CRUD: add, update, delete batch schedules</td></tr>
+<tr><td>✅ &nbsp; <b>Manage Enquiries</b> — view and update the status of every contact-form submission</td></tr>
+
+<tr><td>
+
+#### 🎨 Frontend, Untouched <img src="https://img.shields.io/badge/-1-6D5BF0?style=flat-square"/>
+
+</td></tr>
+<tr><td>✅ &nbsp; Same pages, same styling, same images as the original static site — only the logic underneath is real</td></tr>
+</table>
+
+<br/>
+
+<div align="center">
+
+**📚 Courses on offer**
+
+<table width="90%">
+<tr>
+<td align="center" width="33%">🌐 <b>Web Development</b></td>
+<td align="center" width="33%">☕ <b>Java</b></td>
+<td align="center" width="33%">🐍 <b>Python</b></td>
+</tr>
+<tr>
+<td align="center">📊 <b>Data Analytics</b></td>
+<td align="center">🔬 <b>Data Science</b></td>
+<td align="center">🟣 <b>.NET</b></td>
+</tr>
+<tr>
+<td align="center">🎨 <b>UI / UX Design</b></td>
+<td align="center">🛡️ <b>Cybersecurity</b></td>
+<td align="center">🤖 <b>Artificial Intelligence</b></td>
+</tr>
+</table>
+
+</div>
+
+<div align="right">
+
+[⬆ back to top](#-table-of-contents)
+
+</div>
+
+---
+
+## 🔄 How It Works
+
+**Student journey, end to end:**
+
+```mermaid
+flowchart LR
+    A([Visitor]) --> B[Browse Courses / Batch Schedule]
+    A --> C[Login dropdown]
+    C --> D[Student Login / Sign Up]
+    C --> E[Admin Login]
+    D --> F[Student Dashboard]
+    B --> G[Submit Contact / Enquiry Form]
+    G --> H[(MongoDB: Enquiry)]
+    E --> I[Admin Panel]
+    I --> J[Manage Students]
+    I --> K[Manage Batches]
+    I --> L[Manage Enquiries]
+```
+
+**Auth flow — why passwords never travel or sit in plain text:**
+
+```mermaid
+sequenceDiagram
+    participant U as User (Browser)
+    participant F as Frontend (JS fetch)
+    participant A as Express API
+    participant DB as MongoDB
+
+    U->>F: Enter email + password
+    F->>A: POST /api/auth/login
+    A->>DB: Find account by email
+    DB-->>A: Hashed password
+    A->>A: bcrypt.compare(input, hash)
+    A-->>F: JWT token + profile
+    F-->>U: Store token in localStorage, redirect to dashboard
+```
+
+<div align="right">
+
+[⬆ back to top](#-table-of-contents)
+
+</div>
+
+---
+
+## 🧰 Tech Stack
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=html,css,js,bootstrap,nodejs,express,mongodb,git&theme=light" />
+
+</div>
+
+<br/>
+
+<table width="100%">
+<tr><th align="left" width="20%">Layer</th><th align="left">Technologies</th></tr>
+<tr><td>🎨 <b>Frontend</b></td><td>HTML5, CSS3, vanilla JavaScript, Bootstrap</td></tr>
+<tr><td>⚙️ <b>Backend</b></td><td>Node.js, Express.js, JWT (<code>jsonwebtoken</code>), <code>bcryptjs</code>, CORS, dotenv</td></tr>
+<tr><td>🗄️ <b>Database</b></td><td>MongoDB + Mongoose <i>(local or MongoDB Atlas free tier)</i></td></tr>
+<tr><td>☁️ <b>Deployment</b></td><td>Backend → Render · Frontend → Netlify (or any static host) · Database → MongoDB Atlas</td></tr>
+</table>
+
+<div align="right">
+
+[⬆ back to top](#-table-of-contents)
+
+</div>
+
+---
+
+## 📁 Project Structure
+
+```
+educlasses/
+├── backend/
+│   ├── config/db.js          # Mongoose connection
+│   ├── models/                # Student, Admin, Batch, Enquiry
+│   ├── middleware/auth.js      # requireStudentAuth, requireAdminAuth
+│   ├── routes/                 # authRoutes, adminRoutes, batchRoutes, enquiryRoutes
+│   ├── seedAdmin.js             # creates/updates the one Admin account
+│   ├── seedBatches.js           # optional: seed sample batch data
+│   ├── server.js
+│   └── .env.example
+├── frontend/
+│   ├── index.html               # Home
+│   ├── Courses.html
+│   ├── batch.html                # Batch Schedule
+│   ├── Contact.html
+│   ├── login.html                # Student Login / Sign Up
+│   ├── student.html              # Student Dashboard
+│   ├── admin-login.html
+│   ├── admin.html                # Admin Dashboard
+│   └── assets/
+│       ├── images/
+│       ├── js/api-config.js       # API_BASE_URL — point this at your backend
+│       ├── js/script.js
+│       ├── syllabus/               # 9 course syllabus PDFs
+│       └── screenshots/            # README preview images
+└── README.md
+```
+
+<div align="right">
+
+[⬆ back to top](#-table-of-contents)
+
+</div>
+
+---
+
+## 🚀 Getting Started
+
+### ✅ Prerequisites
+- **Node.js 18+**
+- **MongoDB** running locally, *or* a free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster
+
+### 1️⃣ Clone the repo
+```bash
+git clone https://github.com/your-username/educlasses.git
+cd educlasses
+```
+
+### 2️⃣ Backend setup
 ```bash
 cd backend
 npm install
 cp .env.example .env
 ```
 
-Edit `.env` and fill in:
-- `MONGO_URI` — get a free cluster at [mongodb.com/atlas](https://www.mongodb.com/atlas) (Free Shared tier is enough), then paste the connection string here.
-- `JWT_SECRET` — any long random string.
-- `CLIENT_ORIGIN` — leave the local defaults for now (`http://localhost:5500,http://127.0.0.1:5500`).
-- `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` — the admin account you want created. These are only read by the seed command below, not at login time.
+Edit `.env` with your own values:
+```env
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/educlasses
+JWT_SECRET=change_this_to_a_long_random_secret
+PORT=5000
+CLIENT_ORIGIN=http://localhost:5500,http://127.0.0.1:5500
+ADMIN_NAME=Admin
+ADMIN_EMAIL=admin@educlasses.com
+ADMIN_PASSWORD=change_this_admin_password
+```
 
-**Create the admin account in the database** (run this once, or again any time you want to reset the admin password):
-
+**Create the admin account in the database** (run once, or again any time you want to reset the admin password):
 ```bash
 npm run seed:admin
 ```
-
 You should see:
 ```
 Admin account created for admin@educlasses.com
 ```
 
-**Start the server:**
+*(Optional)* seed some sample batch schedules:
+```bash
+npm run seed:batches
+```
 
+**Start the server:**
 ```bash
 npm start
 ```
-(or `npm run dev` if you want it to auto-restart on file changes)
-
-You should see:
+(or `npm run dev` to auto-restart on file changes)
 ```
 MongoDB connected successfully
 EduClasses backend running on port 5000
 ```
 
-## 2. Run the frontend
+### 3️⃣ Frontend setup
 
-`frontend/assets/js/api-config.js` already points to `http://localhost:5000`, which matches the local backend above — no changes needed for local testing.
+`frontend/assets/js/api-config.js` already points to `http://localhost:5000`, matching the local backend above.
 
-Open `frontend/index.html` with a local server (VS Code "Live Server" extension, or run `npx serve frontend` from the project root) — don't just double-click the file, `fetch()` calls work better served over http.
+Open `frontend/index.html` with a local server (VS Code **Live Server** extension, or `npx serve frontend` from the project root) — `fetch()` calls work more reliably over http than opening the file directly.
 
-Then, in the browser:
-- Click **Login** in the navbar → choose **Student Login** or **Admin Login** from the dropdown.
-- **Student Login** page → **Sign Up** tab → create a student account → you'll land on `student.html` with your profile pulled from the database.
-- **Contact** page → submit the enquiry form → it's saved in MongoDB.
-- **Admin Login** page → log in with the `ADMIN_EMAIL` / `ADMIN_PASSWORD` you seeded above → lands on `admin.html`, showing every registered student and every enquiry.
+### 4️⃣ Try it out
 
----
+<table width="100%">
+<tr><th align="left">Step</th><th align="left">Where</th></tr>
+<tr><td>Register a student</td><td><b>Login</b> dropdown → <b>Student Login</b> → <b>Sign Up</b> tab</td></tr>
+<tr><td>View your profile</td><td>Redirects to <code>student.html</code> after sign-up, pulled from MongoDB</td></tr>
+<tr><td>Submit an enquiry</td><td><b>Contact</b> page → fill the form → saved as an <code>Enquiry</code></td></tr>
+<tr><td>Log in as admin</td><td><b>Login</b> dropdown → <b>Admin Login</b> → use your seeded <code>ADMIN_EMAIL</code> / <code>ADMIN_PASSWORD</code></td></tr>
+</table>
 
-## 3. How to check your data
+<div align="right">
 
-You have two easy ways to see what's actually stored in the database:
+[⬆ back to top](#-table-of-contents)
 
-### Option A — the Admin Dashboard (easiest, no extra tools)
-Log in at `admin-login.html` with your seeded admin credentials. `admin.html` lists every student that signed up and every contact-form enquiry, pulled live from MongoDB. This covers the two collections you'll care about day-to-day (`Student`, `Enquiry`).
-
-### Option B — MongoDB Compass (see every collection, including `Admin`)
-Compass is a free desktop GUI for browsing MongoDB directly.
-1. Download it from [mongodb.com/products/compass](https://www.mongodb.com/products/compass).
-2. Open Compass → paste the same connection string you used for `MONGO_URI` in `.env` → **Connect**.
-3. Open your database (named in the connection string, e.g. `educlasses`) → you'll see three collections:
-   - `students` — every registered student, with hashed passwords
-   - `enquiries` — every contact-form submission
-   - `admins` — the one admin account created by `npm run seed:admin`
-4. Click any collection to view, filter, edit, or delete individual documents.
-
-### Option C — MongoDB Atlas web UI
-If your cluster is on Atlas, you can also browse data without installing anything: log into [cloud.mongodb.com](https://cloud.mongodb.com) → your cluster → **Browse Collections**. Same view as Compass, just in the browser.
+</div>
 
 ---
 
-## 4. Deploy backend to Render
+## 📡 API Reference
 
-1. Push the `backend/` folder to a GitHub repo (or the whole project — Render lets you set a root directory).
-2. On [render.com](https://render.com) → **New → Web Service** → connect your repo.
-3. Settings:
-   - **Root Directory:** `backend`
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-4. Add environment variables (same as your local `.env`): `MONGO_URI`, `JWT_SECRET`, `CLIENT_ORIGIN` (set this to your Netlify URL once you have it, e.g. `https://educlasses.netlify.app`).
-5. Deploy. Render will give you a live URL like `https://educlasses-backend.onrender.com`.
-6. Run the admin seed once against this environment too — either add `ADMIN_NAME`/`ADMIN_EMAIL`/`ADMIN_PASSWORD` as Render env vars and use Render's Shell tab to run `npm run seed:admin`, or run it locally with `MONGO_URI` in your local `.env` pointed at the same Atlas cluster (same effect, since it's the same database).
+### 🔐 Auth (Student)
+
+<table width="100%">
+<tr><th align="left" width="10%">Method</th><th align="left" width="30%">Endpoint</th><th align="left" width="20%">Auth</th><th align="left">Description</th></tr>
+<tr><td><img src="https://img.shields.io/badge/POST-49CC90?style=flat-square"/></td><td><code>/api/auth/register</code></td><td>none</td><td>Create a student account</td></tr>
+<tr><td><img src="https://img.shields.io/badge/POST-49CC90?style=flat-square"/></td><td><code>/api/auth/login</code></td><td>none</td><td>Log in, returns JWT</td></tr>
+<tr><td><img src="https://img.shields.io/badge/GET-61AFFE?style=flat-square"/></td><td><code>/api/auth/me</code></td><td>student token</td><td>Get logged-in student's profile</td></tr>
+</table>
+
+### ✉️ Enquiries & 🗓️ Batches (Public)
+
+<table width="100%">
+<tr><th align="left" width="10%">Method</th><th align="left" width="30%">Endpoint</th><th align="left" width="20%">Auth</th><th align="left">Description</th></tr>
+<tr><td><img src="https://img.shields.io/badge/POST-49CC90?style=flat-square"/></td><td><code>/api/enquiry</code></td><td>none</td><td>Submit the contact form</td></tr>
+<tr><td><img src="https://img.shields.io/badge/GET-61AFFE?style=flat-square"/></td><td><code>/api/batches</code></td><td>none</td><td>List all batches for the Batch Schedule page</td></tr>
+</table>
+
+### 🛡️ Admin
+
+<table width="100%">
+<tr><th align="left" width="10%">Method</th><th align="left" width="30%">Endpoint</th><th align="left" width="20%">Auth</th><th align="left">Description</th></tr>
+<tr><td><img src="https://img.shields.io/badge/POST-49CC90?style=flat-square"/></td><td><code>/api/admin/login</code></td><td>none</td><td>Admin login, returns JWT</td></tr>
+<tr><td><img src="https://img.shields.io/badge/GET-61AFFE?style=flat-square"/></td><td><code>/api/admin/students</code></td><td>admin token</td><td>List all students</td></tr>
+<tr><td><img src="https://img.shields.io/badge/GET-61AFFE?style=flat-square"/></td><td><code>/api/admin/enquiries</code></td><td>admin token</td><td>List all enquiries</td></tr>
+<tr><td><img src="https://img.shields.io/badge/PATCH-FCA130?style=flat-square"/></td><td><code>/api/admin/enquiries/:id</code></td><td>admin token</td><td>Update an enquiry's status</td></tr>
+<tr><td><img src="https://img.shields.io/badge/GET-61AFFE?style=flat-square"/></td><td><code>/api/admin/batches</code></td><td>admin token</td><td>List all batches</td></tr>
+<tr><td><img src="https://img.shields.io/badge/POST-49CC90?style=flat-square"/></td><td><code>/api/admin/batches</code></td><td>admin token</td><td>Add a new batch</td></tr>
+<tr><td><img src="https://img.shields.io/badge/PUT-FCA130?style=flat-square"/></td><td><code>/api/admin/batches/:id</code></td><td>admin token</td><td>Update a batch</td></tr>
+<tr><td><img src="https://img.shields.io/badge/DELETE-F93E3E?style=flat-square"/></td><td><code>/api/admin/batches/:id</code></td><td>admin token</td><td>Delete a batch</td></tr>
+</table>
+
+<div align="right">
+
+[⬆ back to top](#-table-of-contents)
+
+</div>
+
+---
+
+## 🔍 Checking Your Data
+
+<table width="100%">
+<tr><th align="left" width="25%">Option</th><th align="left">How</th></tr>
+<tr><td>🖥️ <b>Admin Dashboard</b> <i>(easiest)</i></td><td>Log in at <code>admin-login.html</code> with your seeded credentials — <code>admin.html</code> lists every student, batch, and enquiry live from MongoDB.</td></tr>
+<tr><td>🧭 <b>MongoDB Compass</b></td><td>Free desktop GUI — paste your <code>MONGO_URI</code> connection string and browse the <code>students</code>, <code>admins</code>, <code>batches</code>, and <code>enquiries</code> collections directly.</td></tr>
+<tr><td>☁️ <b>MongoDB Atlas Web UI</b></td><td>If hosted on Atlas: <a href="https://cloud.mongodb.com">cloud.mongodb.com</a> → your cluster → <b>Browse Collections</b> — same view, no install needed.</td></tr>
+</table>
+
+<div align="right">
+
+[⬆ back to top](#-table-of-contents)
+
+</div>
+
+---
+
+## ☁️ Deployment
+
+<table width="100%">
+<tr><th align="left" width="20%">Service</th><th align="left" width="20%">Where</th><th align="left">Notes</th></tr>
+<tr><td>🎨 <b>Frontend</b></td><td><a href="https://netlify.com">Netlify</a></td><td>Drag-and-drop the <code>frontend/</code> folder, or connect the repo with publish directory <code>frontend</code></td></tr>
+<tr><td>⚙️ <b>Backend</b></td><td><a href="https://render.com">Render</a></td><td>Root: <code>backend</code>, build: <code>npm install</code>, start: <code>npm start</code></td></tr>
+<tr><td>🗄️ <b>Database</b></td><td><a href="https://www.mongodb.com/cloud/atlas/register">MongoDB Atlas</a></td><td>Free M0 cluster</td></tr>
+</table>
+
+**Steps:**
+1. Push the repo to GitHub, deploy `backend/` to Render, and add the same environment variables as your local `.env` (set `CLIENT_ORIGIN` to your Netlify URL once you have it).
+2. Run `npm run seed:admin` once against the deployed database (via Render's Shell tab, or locally pointed at the same Atlas cluster).
+3. In `frontend/assets/js/api-config.js`, update `API_BASE_URL` to your live Render URL.
+4. Deploy `frontend/` to Netlify, then update `CLIENT_ORIGIN` on Render to the resulting Netlify URL and redeploy so CORS allows it.
 
 > Free Render web services sleep after inactivity — the first request after idling can take ~30–50 seconds to wake up. That's normal on the free tier.
 
-## 5. Deploy frontend to Netlify
+<div align="right">
 
-1. In `frontend/assets/js/api-config.js`, change:
-   ```js
-   const API_BASE_URL = "https://educlasses-backend.onrender.com";
-   ```
-   (use your actual Render URL from step 4).
-2. On [netlify.com](https://netlify.com) → **Add new site → Deploy manually** → drag and drop the `frontend/` folder (or connect the repo and set **Publish directory** to `frontend`).
-3. Netlify gives you a live URL like `https://educlasses.netlify.app`.
-4. Go back to Render → update `CLIENT_ORIGIN` to that exact Netlify URL → redeploy the backend so CORS allows it.
+[⬆ back to top](#-table-of-contents)
 
-Your site is now live end-to-end: real signup/login, real contact form storage, and a real admin dashboard, all backed by MongoDB.
+</div>
 
 ---
 
-## 6. Adding screenshots to this README
+## 🛠 Skills Demonstrated
 
-A folder is already set up at `frontend/assets/screenshots/` for this. To add a screenshot:
+<table width="100%">
+<tr>
+<td valign="top" width="33%">
 
-1. Take your screenshot (e.g. of `index.html`, the admin dashboard, or MongoDB Compass showing your data) and save it as a `.png` or `.jpg`.
-2. Drop the image file into `frontend/assets/screenshots/` — for example `frontend/assets/screenshots/homepage.png`.
-3. In this `README.md`, add a line using Markdown image syntax, pointing at that path:
-   ```md
-   ![Homepage](frontend/assets/screenshots/homepage.png)
-   ```
-   The text in `[...]` is just the alt text (shown if the image fails to load); the path in `(...)` is where the file actually lives.
-4. Save the README — on GitHub, GitLab, or any Markdown viewer, the image will render inline automatically. No extra tooling needed.
+**🎨 Frontend**
+- Multi-page static site (HTML/CSS/Bootstrap)
+- `fetch()`-based API integration
+- Token-based session handling in `localStorage`
 
-Example section you can paste in and fill with your own screenshots:
+</td>
+<td valign="top" width="33%">
 
-```md
-## Screenshots
+**⚙️ Backend**
+- RESTful API design in Express
+- JWT auth & role-based middleware (student vs. admin)
+- Mongoose schema design across 4 collections
+- Password hashing with bcrypt
 
-### Homepage
-![Homepage](frontend/assets/screenshots/homepage.png)
+</td>
+<td valign="top" width="33%">
 
-### Student Dashboard
-![Student Dashboard](frontend/assets/screenshots/student-dashboard.png)
+**🏗️ Engineering**
+- Secrets kept out of Git via `.env`
+- CORS configured per allowed origin
+- Zero-cost deployment pipeline (Render + Netlify + Atlas)
 
-### Admin Dashboard
-![Admin Dashboard](frontend/assets/screenshots/admin-dashboard.png)
-```
+</td>
+</tr>
+</table>
+
+<div align="right">
+
+[⬆ back to top](#-table-of-contents)
+
+</div>
 
 ---
 
-## API reference
+## 🗺️ Roadmap
 
-| Method | Endpoint | Auth | Purpose |
-|---|---|---|---|
-| POST | `/api/auth/register` | none | Create a student account |
-| POST | `/api/auth/login` | none | Log in, returns JWT |
-| GET | `/api/auth/me` | student token | Get logged-in student's profile |
-| POST | `/api/enquiry` | none | Submit contact form |
-| POST | `/api/admin/login` | none | Admin login, returns JWT |
-| GET | `/api/admin/students` | admin token | List all students |
-| GET | `/api/admin/enquiries` | admin token | List all enquiries |
-| PATCH | `/api/admin/enquiries/:id` | admin token | Update enquiry status |
+<table width="100%">
+<tr><th align="left" width="70%">Item</th><th align="center">Status</th></tr>
+<tr><td>Email verification for student sign-up</td><td align="center"><img src="https://img.shields.io/badge/-Planned-lightgrey?style=flat-square"/></td></tr>
+<tr><td>Course enrollment tracking per student</td><td align="center"><img src="https://img.shields.io/badge/-Planned-lightgrey?style=flat-square"/></td></tr>
+<tr><td>Pagination & search on the admin tables</td><td align="center"><img src="https://img.shields.io/badge/-Planned-lightgrey?style=flat-square"/></td></tr>
+<tr><td>Forgot-password flow for students</td><td align="center"><img src="https://img.shields.io/badge/-Planned-lightgrey?style=flat-square"/></td></tr>
+</table>
 
-## Notes
+<div align="right">
 
-- Passwords are hashed with bcrypt for both students and the admin — never stored in plain text.
-- Sessions use JWT stored in the browser's `localStorage` (`eduToken` for students, `eduAdminToken` for admin).
-- The admin account lives in the `admins` collection in MongoDB, created/updated via `npm run seed:admin`. Run that command again any time you want to change the admin's name, email, or password — it updates the existing record instead of creating a duplicate.
+[⬆ back to top](#-table-of-contents)
+
+</div>
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+<table width="100%">
+<tr><th align="center" width="10%">Step</th><th align="left">Action</th></tr>
+<tr><td align="center">1️⃣</td><td>Fork the project</td></tr>
+<tr><td align="center">2️⃣</td><td>Create your feature branch — <code>git checkout -b feature/amazing-feature</code></td></tr>
+<tr><td align="center">3️⃣</td><td>Commit your changes — <code>git commit -m 'Add amazing feature'</code></td></tr>
+<tr><td align="center">4️⃣</td><td>Push to the branch — <code>git push origin feature/amazing-feature</code></td></tr>
+<tr><td align="center">5️⃣</td><td>Open a Pull Request</td></tr>
+</table>
+
+<div align="right">
+
+[⬆ back to top](#-table-of-contents)
+
+</div>
+
+---
+
+## 📬 Contact
+
+<div align="center">
+
+**Your Name**
+
+[![Email](https://img.shields.io/badge/Email-your.email%40example.com-2563EB?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your.email@example.com)
+[![GitHub](https://img.shields.io/badge/GitHub-your--username-181717?style=for-the-badge&logo=github)](https://github.com/your-username)
+
+### ⭐ If this project helped you, consider giving it a star — it really helps!
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1E40AF,100:2563EB&height=100&section=footer" width="100%"/>
+
+</div>
