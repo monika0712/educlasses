@@ -75,60 +75,99 @@ Built as a full-stack project covering static **HTML/CSS/JS** on the frontend an
 
 ## 📸 Screenshots
 
-### 🏠 Home Page
+### 🏠 Home Page <sub>(5)</sub>
 
 <table width="100%">
 <tr>
-<td align="center" width="50%"><img src="screenshots/home-hero.png" alt="Home page hero" width="100%" /><br/><sub><b>Hero</b> — banner, quick links & call-to-action</sub></td>
-<td align="center" width="50%"><img src="screenshots/home-courses.png" alt="Home page courses preview" width="100%" /><br/><sub><b>Courses Preview</b> — featured courses on the landing page</sub></td>
+<td align="center" width="33%"><img src="screenshots/home-1-hero.png" alt="Home page hero" width="100%" /><br/><sub><b>Hero</b> — banner & call-to-action</sub></td>
+<td align="center" width="33%"><img src="screenshots/home-2-achievements.png" alt="Home page achievements" width="100%" /><br/><sub><b>Our Achievements</b> — students, success rate, courses</sub></td>
+<td align="center" width="33%"><img src="screenshots/home-3-offerings.png" alt="Home page what we offer" width="100%" /><br/><sub><b>What We Offer</b></sub></td>
+</tr>
+<tr>
+<td align="center" width="33%"><img src="screenshots/home-4-testimonials.png" alt="Home page testimonials" width="100%" /><br/><sub><b>Testimonials</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/home-5-footer.png" alt="Home page footer" width="100%" /><br/><sub><b>Footer</b></sub></td>
+<td width="33%"></td>
 </tr>
 </table>
 
-### 📚 Courses
+### 📚 Courses <sub>(5)</sub>
 
 <table width="100%">
 <tr>
-<td align="center" width="50%"><img src="screenshots/courses.png" alt="Courses grid" width="100%" /><br/><sub><b>Course Catalog</b> — 9 courses with syllabus & enroll actions</sub></td>
-<td align="center" width="50%"><img src="screenshots/courses-detail.png" alt="Course detail view" width="100%" /><br/><sub><b>Course Details</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/courses-1-header.png" alt="Courses page header" width="100%" /><br/><sub><b>Page Header</b> + Full Stack / Java / Python</sub></td>
+<td align="center" width="33%"><img src="screenshots/courses-2-webjavapython.png" alt="Full Stack, Java, Python courses" width="100%" /><br/><sub><b>Course Cards</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/courses-3-dataanalytics.png" alt="Data Analytics, Data Science, .NET courses" width="100%" /><br/><sub><b>Data Analytics / Data Science / .NET</b></sub></td>
+</tr>
+<tr>
+<td align="center" width="33%"><img src="screenshots/courses-4-uiuxcyberai.png" alt="UI/UX, Cyber Security, AI courses" width="100%" /><br/><sub><b>UI/UX / Cyber Security / AI</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/courses-5-footer.png" alt="Courses page footer" width="100%" /><br/><sub><b>Footer</b></sub></td>
+<td width="33%"></td>
 </tr>
 </table>
 
-### 🗓️ Batch Schedule
+<p align="center"><i>All 9 courses — Web Development, Java, Python, Data Analytics, Data Science, .NET, UI/UX, Cybersecurity, AI — each with a <b>Know More</b> and <b>Download Syllabus</b> action.</i></p>
 
-<p align="center"><img src="screenshots/batch-schedule.png" alt="Batch schedule page" width="100%" /></p>
+### 🗓️ Batch Schedule <sub>(3)</sub>
+
+<table width="100%">
+<tr>
+<td align="center" width="33%"><img src="screenshots/batch-1-table.png" alt="Batch schedule page and table" width="100%" /><br/><sub><b>Hero & Schedule Table</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/batch-2-more.png" alt="Batch schedule additional batches" width="100%" /><br/><sub><b>More Upcoming Batches</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/batch-3-footer.png" alt="Batch schedule footer" width="100%" /><br/><sub><b>Footer</b></sub></td>
+</tr>
+</table>
+
 <p align="center"><i>Live batch timings pulled from the <code>Batch</code> collection — no more static tables to edit by hand.</i></p>
 
-### ✉️ Contact Us
-
-<p align="center"><img src="screenshots/contact.png" alt="Contact page" width="100%" /></p>
-<p align="center"><i>Submits straight to MongoDB as a real <code>Enquiry</code> document instead of just showing a fake success message.</i></p>
-
-### 🔐 Student Login & Sign Up
+### ✉️ Contact Us <sub>(3)</sub>
 
 <table width="100%">
 <tr>
-<td align="center" width="50%"><img src="screenshots/login.png" alt="Student login tab" width="100%" /><br/><sub><b>Login</b></sub></td>
-<td align="center" width="50%"><img src="screenshots/signup.png" alt="Student sign up tab" width="100%" /><br/><sub><b>Sign Up</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/contact-1-form.png" alt="Contact page enquiry form" width="100%" /><br/><sub><b>Hero & Enquiry Form</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/contact-2-formcontinued.png" alt="Contact form continued" width="100%" /><br/><sub><b>Form (continued)</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/contact-3-connect.png" alt="Connect with us section" width="100%" /><br/><sub><b>Connect With Us</b> — address & phone</sub></td>
 </tr>
 </table>
 
-<p align="center"><i>The "Login" dropdown in the navbar splits into <b>Student Login</b> and <b>Admin Login</b> — both hit real endpoints.</i></p>
+<p align="center"><i>Submits straight to MongoDB as a real <code>Enquiry</code> document instead of just showing a fake success message.</i></p>
 
-### 👤 Student Dashboard
+### 🔐 Student & Admin Login <sub>(7)</sub>
+
+<table width="100%">
+<tr>
+<td align="center" width="33%"><img src="screenshots/login-1-dropdown.png" alt="Navbar login dropdown" width="100%" /><br/><sub><b>Login Dropdown</b> — Student / Admin</sub></td>
+<td align="center" width="33%"><img src="screenshots/login-2-student-login.png" alt="Student login tab" width="100%" /><br/><sub><b>Student Login</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/login-3-student-signup.png" alt="Student sign up tab" width="100%" /><br/><sub><b>Student Sign Up</b></sub></td>
+</tr>
+<tr>
+<td align="center" width="33%"><img src="screenshots/login-4-signup-filled.png" alt="Sign up form filled in" width="100%" /><br/><sub><b>Sign Up</b> — form filled</sub></td>
+<td align="center" width="33%"><img src="screenshots/login-5-signup-success.png" alt="Sign up success" width="100%" /><br/><sub><b>Registration Successful</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/login-6-admin-dropdown.png" alt="Admin login access" width="100%" /><br/><sub><b>Admin Login</b> — access</sub></td>
+</tr>
+<tr>
+<td align="center" width="33%"><img src="screenshots/login-7-admin-login.png" alt="Admin login form" width="100%" /><br/><sub><b>Admin Login</b> — form</sub></td>
+<td width="33%"></td>
+<td width="33%"></td>
+</tr>
+</table>
+
+<p align="center"><i>The "Login" dropdown in the navbar splits into <b>Student Login</b> and <b>Admin Login</b> — both hit real endpoints, backed by bcrypt-hashed passwords and JWT sessions.</i></p>
+
+### 👤 Student Dashboard <sub>(1)</sub>
 
 <p align="center"><img src="screenshots/student-dashboard.png" alt="Student dashboard" width="100%" /></p>
 <p align="center"><i>Profile pulled live from MongoDB right after sign-up — no page reload, no dummy data.</i></p>
 
-### 🛡️ Admin Panel
+### 🛡️ Admin Panel <sub>(4)</sub>
 
 <table width="100%">
 <tr>
-<td align="center" width="50%"><img src="screenshots/admin-students.png" alt="Admin - manage students" width="100%" /><br/><sub><b>Manage Students</b> — every registered student, pulled live</sub></td>
-<td align="center" width="50%"><img src="screenshots/admin-batches.png" alt="Admin - manage batches" width="100%" /><br/><sub><b>Manage Batches</b> — add / edit / delete batch schedules</sub></td>
+<td align="center" width="50%"><img src="screenshots/admin-1-students.png" alt="Admin - manage students" width="100%" /><br/><sub><b>Manage Students</b> — every registered student, pulled live</sub></td>
+<td align="center" width="50%"><img src="screenshots/admin-2-batches-add.png" alt="Admin - add new batch" width="100%" /><br/><sub><b>Manage Batches</b> — add a new batch</sub></td>
 </tr>
 <tr>
-<td align="center" width="50%"><img src="screenshots/admin-enquiries.png" alt="Admin - manage enquiries" width="100%" /><br/><sub><b>Manage Enquiries</b> — track status: new / contacted / closed</sub></td>
-<td align="center" width="50%"><img src="screenshots/admin-login.png" alt="Admin login" width="100%" /><br/><sub><b>Admin Login</b></sub></td>
+<td align="center" width="50%"><img src="screenshots/admin-3-enquiries.png" alt="Admin - manage enquiries" width="100%" /><br/><sub><b>Manage Enquiries</b> — track status: new / contacted / closed</sub></td>
+<td align="center" width="50%"><img src="screenshots/admin-4-batches-list.png" alt="Admin - batches list" width="100%" /><br/><sub><b>Manage Batches</b> — full list with edit / delete</sub></td>
 </tr>
 </table>
 
