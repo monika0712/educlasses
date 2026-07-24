@@ -9,7 +9,8 @@ const { requireAdminAuth } = require("../middleware/auth");
 
 const router = express.Router();
 
-// POST /api/admin/login
+
+// ================= ADMIN LOGIN =================
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -19,113 +20,279 @@ router.post("/login", async (req, res) => {
     }
 
     const admin = await Admin.findOne({ email: email.toLowerCase() });
+
     if (!admin) {
       return res.status(401).json({ message: "Invalid admin credentials." });
     }
 
     const match = await bcrypt.compare(password, admin.password);
+
     if (!match) {
       return res.status(401).json({ message: "Invalid admin credentials." });
     }
 
     const token = jwt.sign(
-      { id: admin._id, email: admin.email, role: "admin" },
+      {
+        id: admin._id,
+        email: admin.email,
+        role: "admin"
+      },
       process.env.JWT_SECRET,
-      { expiresIn: "1d" }
+      {
+        expiresIn: "1d"
+      }
     );
 
     res.json({
       message: "Admin login successful",
       token,
-      admin: { id: admin._id, fullName: admin.fullName, email: admin.email },
+      admin: {
+        id: admin._id,
+        fullName: admin.fullName,
+        email: admin.email
+      }
     });
+
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Server error during admin login." });
+    res.status(500).json({
+      message: "Server error during admin login."
+    });
   }
 });
 
-// GET /api/admin/students - list all registered students
+
+// ================= STUDENTS =================
 router.get("/students", requireAdminAuth, async (req, res) => {
   try {
-    const students = await Student.find().select("-password").sort({ createdAt: -1 });
+
+    const students = await Student.find()
+      .select("-password")
+      .sort({ createdAt: -1 });
+
     res.json({ students });
+
   } catch (err) {
+
     console.error(err);
-    res.status(500).json({ message: "Server error fetching students." });
+
+    res.status(500).json({
+      message: "Server error fetching students."
+    });
   }
 });
 
-// GET /api/admin/enquiries - list all contact form enquiries
+
+// ================= ENQUIRIES =================
 router.get("/enquiries", requireAdminAuth, async (req, res) => {
   try {
-    const enquiries = await Enquiry.find().sort({ createdAt: -1 });
+
+    const enquiries = await Enquiry.find().sort({
+      createdAt: -1
+    });
+
     res.json({ enquiries });
+
   } catch (err) {
+
     console.error(err);
-    res.status(500).json({ message: "Server error fetching enquiries." });
+
+    res.status(500).json({
+      message: "Server error fetching enquiries."
+    });
   }
 });
 
-// PATCH /api/admin/enquiries/:id - update enquiry status
 router.patch("/enquiries/:id", requireAdminAuth, async (req, res) => {
   try {
+
     const { status } = req.body;
+
     const enquiry = await Enquiry.findByIdAndUpdate(
       req.params.id,
       { status },
       { new: true }
     );
+
     if (!enquiry) {
-      return res.status(404).json({ message: "Enquiry not found." });
+      return res.status(404).json({
+        message: "Enquiry not found."
+      });
     }
+
     res.json({ enquiry });
+
   } catch (err) {
+
     console.error(err);
-    res.status(500).json({ message: "Server error updating enquiry." });
+
+    res.status(500).json({
+      message: "Server error updating enquiry."
+    });
   }
 });
 
-// GET /api/admin/batches - list all batches (admin view, same data as public but authenticated)
+
+// ================= BATCHES =================
+
+// GET ALL
 router.get("/batches", requireAdminAuth, async (req, res) => {
   try {
-    const batches = await Batch.find().sort({ createdAt: -1 });
+
+    const batches = await Batch.find().sort({
+      createdAt: -1
+    });
+
     res.json({ batches });
+
   } catch (err) {
+
     console.error(err);
-    res.status(500).json({ message: "Server error fetching batches." });
+
+    res.status(500).json({
+      message: "Server error fetching batches."
+    });
   }
 });
 
-// POST /api/admin/batches - add a new batch schedule
+
+// ADD NEW
 router.post("/batches", requireAdminAuth, async (req, res) => {
-  try {
-    const { courseName, startDate, endDate, timings, days, location } = req.body;
 
-    if (!courseName || !startDate || !endDate || !timings || !days || !location) {
-      return res.status(400).json({ message: "All fields are required." });
+  try {
+
+    const {
+      courseName,
+      startDate,
+      endDate,
+      timings,
+      days,
+      location,
+      status
+    } = req.body;
+
+    if (
+      !courseName ||
+      !startDate ||
+      !endDate ||
+      !timings ||
+      !days ||
+      !location
+    ) {
+
+      return res.status(400).json({
+        message: "All fields are required."
+      });
     }
 
-    const batch = await Batch.create({ courseName, startDate, endDate, timings, days, location });
-    res.status(201).json({ message: "Batch added successfully.", batch });
+    const batch = await Batch.create({
+      courseName,
+      startDate,
+      endDate,
+      timings,
+      days,
+      location,
+      status
+    });
+
+    res.status(201).json({
+      message: "Batch added successfully.",
+      batch
+    });
+
   } catch (err) {
+
     console.error(err);
-    res.status(500).json({ message: "Server error adding batch." });
+
+    res.status(500).json({
+      message: "Server error adding batch."
+    });
   }
 });
 
-// DELETE /api/admin/batches/:id - remove a batch schedule
-router.delete("/batches/:id", requireAdminAuth, async (req, res) => {
+
+// UPDATE
+router.put("/batches/:id", requireAdminAuth, async (req, res) => {
+
   try {
-    const batch = await Batch.findByIdAndDelete(req.params.id);
+
+    const {
+      courseName,
+      startDate,
+      endDate,
+      timings,
+      days,
+      location,
+      status
+    } = req.body;
+
+    const batch = await Batch.findByIdAndUpdate(
+      req.params.id,
+      {
+        courseName,
+        startDate,
+        endDate,
+        timings,
+        days,
+        location,
+        status
+      },
+      {
+        new: true,
+        runValidators: true
+      }
+    );
+
     if (!batch) {
-      return res.status(404).json({ message: "Batch not found." });
+
+      return res.status(404).json({
+        message: "Batch not found."
+      });
     }
-    res.json({ message: "Batch deleted successfully." });
+
+    res.json({
+      message: "Batch updated successfully.",
+      batch
+    });
+
   } catch (err) {
+
     console.error(err);
-    res.status(500).json({ message: "Server error deleting batch." });
+
+    res.status(500).json({
+      message: "Server error updating batch."
+    });
   }
 });
+
+
+// DELETE
+router.delete("/batches/:id", requireAdminAuth, async (req, res) => {
+
+  try {
+
+    const batch = await Batch.findByIdAndDelete(req.params.id);
+
+    if (!batch) {
+
+      return res.status(404).json({
+        message: "Batch not found."
+      });
+    }
+
+    res.json({
+      message: "Batch deleted successfully."
+    });
+
+  } catch (err) {
+
+    console.error(err);
+
+    res.status(500).json({
+      message: "Server error deleting batch."
+    });
+  }
+});
+
 
 module.exports = router;
