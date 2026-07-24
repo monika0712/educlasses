@@ -13,15 +13,28 @@
 <script src="assets/js/api-config.js"></script>
 
 <style>
-body{ background:#f4f6f9; }
-.dashboard-header{
-background:navy;
-color:white;
-padding:20px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+body{
+    background:#f4f6f9;
+    margin:0;
+    padding-top:90px;   /* Space for fixed header */
 }
+
+/* Sticky Header */
+.dashboard-header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1050;
+    background:navy;
+    color:white;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 10px rgba(0,0,0,0.15);
+}
+
 .badge-new{ background:#0d6efd; }
 .badge-contacted{ background:#fd7e14; }
 .badge-closed{ background:#198754; }
