@@ -2,7 +2,7 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563EB,100:1E40AF&height=220&section=header&text=EduClasses&fontSize=62&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Institute%20Website%20%2B%20Real%20Full%20Stack%20Backend&descAlignY=55&descSize=20" width="100%"/>
 
-<img src="frontend/assets/images/logo.png" alt="EduClasses logo" width="160" />
+<img src="screenshots/logo-card.png" alt="EduClasses logo" width="220" />
 
 <a href="#">
   <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=20&pause=1000&color=2563EB&center=true&vCenter=true&width=650&lines=Real+student+accounts+%E2%80%94+no+more+hardcoded+logins;9+courses%2C+live+batch+schedule%2C+contact+form;Full+admin+dashboard+for+students%2C+batches+%26+enquiries;MERN+stack+%E2%80%94+MongoDB%2C+Express%2C+plain+JS%2C+Node.js" alt="Typing SVG" />
@@ -59,11 +59,30 @@
 
 ## 📌 Overview
 
-> **EduClasses** is a training-institute website — course catalog, batch schedule, and a contact form — rebuilt with a real backend underneath it.
+> **EduClasses** started life as a static training-institute website — a course catalog, a batch schedule, and a contact form with no real logic behind any of it. This project rebuilds the engine underneath, without touching a single pixel of the design.
 
-The original site ran on hardcoded credentials in JavaScript and a fake "thank you" contact form. This version keeps the **exact same look, pages, and styling**, but every interaction is now real: student sign-up/login is backed by **MongoDB + JWT + bcrypt**, the contact form saves genuine enquiries, and a full **admin dashboard** manages students, batches, and enquiries live from the database.
+Every page still looks exactly the same. What changed is everything beneath the surface: student accounts are real and password-hashed, the contact form actually saves enquiries, and a full **admin dashboard** manages students, batches, and enquiries live from MongoDB.
 
-Built as a full-stack project covering static **HTML/CSS/JS** on the frontend and a **Node.js + Express + MongoDB** REST API on the backend.
+<br/>
+
+<div align="center">
+
+**🔁 What Changed**
+
+<table width="90%">
+<tr><th align="left" width="18%">Area</th><th align="left" width="41%">Before</th><th align="left" width="41%">Now</th></tr>
+<tr><td>🔐 <b>Student Login</b></td><td>Hardcoded <code>student</code> / <code>1234</code> in JavaScript</td><td>Real accounts in MongoDB, passwords hashed with <b>bcrypt</b>, sessions via <b>JWT</b></td></tr>
+<tr><td>📝 <b>Student Sign Up</b></td><td>Didn't exist</td><td><b>Sign Up</b> tab on the login page, fully functional</td></tr>
+<tr><td>✉️ <b>Contact Form</b></td><td>Fake "thank you" message, nothing saved</td><td>Real <code>POST</code> to the backend, saved as an <code>Enquiry</code> in MongoDB</td></tr>
+<tr><td>🛡️ <b>Admin</b></td><td>Didn't exist</td><td>Dedicated <b>Admin Login</b> + dashboard to manage students, batches & enquiries</td></tr>
+<tr><td>🗓️ <b>Batch Schedule</b></td><td>Static, hand-edited table</td><td>Pulled live from the <code>Batch</code> collection via the API</td></tr>
+</table>
+
+</div>
+
+<br/>
+
+Built as a full-stack project: static **HTML / CSS / JavaScript** on the frontend, talking to a **Node.js + Express + MongoDB** REST API on the backend — secured with JWT auth and bcrypt password hashing throughout.
 
 <div align="right">
 
@@ -84,7 +103,7 @@ Built as a full-stack project covering static **HTML/CSS/JS** on the frontend an
 <td align="center" width="33%"><img src="screenshots/home-3-offerings.png" alt="Home page what we offer" width="100%" /><br/><sub><b>What We Offer</b></sub></td>
 </tr>
 <tr>
-<td align="center" width="33%"><img src="screenshots/home-4-testimonials.png" alt="Home page testimonials" width="100%" /><br/><sub><b>Testimonials</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/home-4-testimonials.png" alt="Home page testimonials" width="100%" /><br/><sub><b>Start your Journey</b></sub></td>
 <td align="center" width="33%"><img src="screenshots/home-5-footer.png" alt="Home page footer" width="100%" /><br/><sub><b>Footer</b></sub></td>
 <td width="33%"></td>
 </tr>
@@ -94,13 +113,13 @@ Built as a full-stack project covering static **HTML/CSS/JS** on the frontend an
 
 <table width="100%">
 <tr>
-<td align="center" width="33%"><img src="screenshots/courses-1-header.png" alt="Courses page header" width="100%" /><br/><sub><b>Page Header</b> + Full Stack / Java / Python</sub></td>
-<td align="center" width="33%"><img src="screenshots/courses-2-webjavapython.png" alt="Full Stack, Java, Python courses" width="100%" /><br/><sub><b>Course Cards</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/courses-1-header.png" alt="Courses page header" width="100%" /><br/><sub><b>Page Header</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/courses-2-webjavapython.png" alt="Full Stack, Java, Python courses" width="100%" /><br/><sub><b>Full Stack / Java / Python</b></sub></td>
 <td align="center" width="33%"><img src="screenshots/courses-3-dataanalytics.png" alt="Data Analytics, Data Science, .NET courses" width="100%" /><br/><sub><b>Data Analytics / Data Science / .NET</b></sub></td>
 </tr>
 <tr>
-<td align="center" width="33%"><img src="screenshots/courses-4-uiuxcyberai.png" alt="UI/UX, Cyber Security, AI courses" width="100%" /><br/><sub><b>UI/UX / Cyber Security / AI</b></sub></td>
-<td align="center" width="33%"><img src="screenshots/courses-5-footer.png" alt="Courses page footer" width="100%" /><br/><sub><b>Footer</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/courses-5-footer.png" alt="UI/UX, Cyber Security, AI courses" width="100%" /><br/><sub><b>UI/UX / Cyber Security / AI</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/courses-4-uiuxcyberai.png" alt="Courses page footer" width="100%" /><br/><sub><b>Footer</b></sub></td>
 <td width="33%"></td>
 </tr>
 </table>
@@ -111,7 +130,7 @@ Built as a full-stack project covering static **HTML/CSS/JS** on the frontend an
 
 <table width="100%">
 <tr>
-<td align="center" width="33%"><img src="screenshots/batch-1-table.png" alt="Batch schedule page and table" width="100%" /><br/><sub><b>Hero & Schedule Table</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/batch-1-table.png" alt="Batch schedule page " width="100%" /><br/><sub><b>Batch Schedule</b></sub></td>
 <td align="center" width="33%"><img src="screenshots/batch-2-more.png" alt="Batch schedule additional batches" width="100%" /><br/><sub><b>More Upcoming Batches</b></sub></td>
 <td align="center" width="33%"><img src="screenshots/batch-3-footer.png" alt="Batch schedule footer" width="100%" /><br/><sub><b>Footer</b></sub></td>
 </tr>
@@ -123,9 +142,9 @@ Built as a full-stack project covering static **HTML/CSS/JS** on the frontend an
 
 <table width="100%">
 <tr>
-<td align="center" width="33%"><img src="screenshots/contact-1-form.png" alt="Contact page enquiry form" width="100%" /><br/><sub><b>Hero & Enquiry Form</b></sub></td>
-<td align="center" width="33%"><img src="screenshots/contact-2-formcontinued.png" alt="Contact form continued" width="100%" /><br/><sub><b>Form (continued)</b></sub></td>
-<td align="center" width="33%"><img src="screenshots/contact-3-connect.png" alt="Connect with us section" width="100%" /><br/><sub><b>Connect With Us</b> — address & phone</sub></td>
+<td align="center" width="33%"><img src="screenshots/contact-1-form.png" alt="Contact page" width="100%" /><br/><sub><b>Contact Page</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/contact-2-formcontinued.png" alt="Contact form and Enquiry" width="100%" /><br/><sub><b>Contact Details and Enquiry Form</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/contact-3-connect.png" alt="Connect with us section" width="100%" /><br/><sub>Footer</sub></td>
 </tr>
 </table>
 
@@ -137,15 +156,13 @@ Built as a full-stack project covering static **HTML/CSS/JS** on the frontend an
 <tr>
 <td align="center" width="33%"><img src="screenshots/login-1-dropdown.png" alt="Navbar login dropdown" width="100%" /><br/><sub><b>Login Dropdown</b> — Student / Admin</sub></td>
 <td align="center" width="33%"><img src="screenshots/login-2-student-login.png" alt="Student login tab" width="100%" /><br/><sub><b>Student Login</b></sub></td>
-<td align="center" width="33%"><img src="screenshots/login-3-student-signup.png" alt="Student sign up tab" width="100%" /><br/><sub><b>Student Sign Up</b></sub></td>
+<td align="center" width="33%"><img src="screenshots/login-3-student-signup.png" alt="Student sign up tab" width="100%" /><br/><sub><b>Student Sign In</b></sub></td>
 </tr>
 <tr>
 <td align="center" width="33%"><img src="screenshots/login-4-signup-filled.png" alt="Sign up form filled in" width="100%" /><br/><sub><b>Sign Up</b> — form filled</sub></td>
-<td align="center" width="33%"><img src="screenshots/login-5-signup-success.png" alt="Sign up success" width="100%" /><br/><sub><b>Registration Successful</b></sub></td>
 <td align="center" width="33%"><img src="screenshots/login-6-admin-dropdown.png" alt="Admin login access" width="100%" /><br/><sub><b>Admin Login</b> — access</sub></td>
-</tr>
-<tr>
-<td align="center" width="33%"><img src="screenshots/login-7-admin-login.png" alt="Admin login form" width="100%" /><br/><sub><b>Admin Login</b> — form</sub></td>
+
+<td align="center" width="33%"><img src="screenshots/login-7-admin-login.png" alt="Admin login form" width="100%" /><br/><sub><b>Footer</b> </sub></td>
 <td width="33%"></td>
 <td width="33%"></td>
 </tr>
@@ -163,7 +180,7 @@ Built as a full-stack project covering static **HTML/CSS/JS** on the frontend an
 <table width="100%">
 <tr>
 <td align="center" width="50%"><img src="screenshots/admin-1-students.png" alt="Admin - manage students" width="100%" /><br/><sub><b>Manage Students</b> — every registered student, pulled live</sub></td>
-<td align="center" width="50%"><img src="screenshots/admin-2-batches-add.png" alt="Admin - add new batch" width="100%" /><br/><sub><b>Manage Batches</b> — add a new batch</sub></td>
+<td align="center" width="50%"><img src="screenshots/admin-2-batches-add.png" alt="Admin - add new batch" width="100%" /><br/><sub><b>Manage Enquiries</b></sub></td>
 </tr>
 <tr>
 <td align="center" width="50%"><img src="screenshots/admin-3-enquiries.png" alt="Admin - manage enquiries" width="100%" /><br/><sub><b>Manage Enquiries</b> — track status: new / contacted / closed</sub></td>
@@ -612,9 +629,9 @@ Contributions, issues, and feature requests are welcome!
 
 <div align="center">
 
-**Your Name**
+**Monika Patil**
 
-[![Email](https://img.shields.io/badge/Email-your.email%40example.com-2563EB?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your.email@example.com)
+[![Email](https://img.shields.io/badge/Email-patilmonika931@gmail.com-2563EB?style=for-the-badge&logo=gmail&logoColor=white)](mailto:patilmonika931@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-monika0712-181717?style=for-the-badge&logo=github)](https://github.com/monika0712)
 
 ### ⭐ If this project helped you, consider giving it a star — it really helps!
