@@ -1,52 +1,50 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563EB,100:1E40AF&height=220&section=header&text=EduClasses&fontSize=62&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Institute%20Website%20%2B%20Real%20Full%20Stack%20Backend&descAlignY=55&descSize=20" width="100%"/>
-
-<img src="screenshots/logo-card.png" alt="EduClasses logo" width="220" />
-
-<a href="#">
-  <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=20&pause=1000&color=2563EB&center=true&vCenter=true&width=650&lines=Full-stack+MERN+training-institute+platform;9+courses%2C+live+batch+schedule%2C+contact+form;Secure+student+accounts+%E2%80%94+JWT+%2B+bcrypt;Full+admin+dashboard+for+students%2C+batches+%26+enquiries" alt="Typing SVG" />
-</a>
-
-<br/><br/>
-<a href="https://educlasses.netlify.app/">
-  <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=20&pause=1000&color=8E5BFF&center=true&vCenter=true&width=650&lines=1%2C151+curated+interview+questions;12+subjects+%E2%80%94+from+JavaScript+to+Spring+Boot;Timed%2C+server-graded+mock+tests;100%25+free+%E2%80%94+no+paid+APIs+required" alt="Typing SVG" />
-</a>
-
-<br/><br/>
-
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20App-8E5BFF?style=for-the-badge&logo=vercel&logoColor=white)](https://educlasses.netlify.app/)
-
-[![Last Commit](https://img.shields.io/github/last-commit/monika0712/educlasses?style=for-the-badge&color=1E40AF)](https://github.com/monika0712/educlasses/commits/main)
-[![Repo Size](https://img.shields.io/github/repo-size/monika0712/educlasses?style=for-the-badge&color=2563EB)](https://github.com/monika0712/educlasses)
-[![Stars](https://img.shields.io/github/stars/monika0712/educlasses?style=for-the-badge&color=ffd23f)](https://github.com/monika0712/educlasses/stargazers)
-[![License](https://img.shields.io/badge/License-MIT-2563EB?style=for-the-badge)](#-contact)
-
-<br/>
-
-<img src="https://skillicons.dev/icons?i=html,css,js,bootstrap,nodejs,express,mongodb,git&theme=light" />
-
-</div>
-
-<br/>
-
-<div align="center">
-
 ### 📊 At a Glance
 
 <table width="100%">
 <tr>
-<td align="center" width="20%">📚 <b>Courses</b><br/><h3>9</h3></td>
-<td align="center" width="20%">🖥️ <b>Frontend Pages</b><br/><h3>8</h3></td>
-<td align="center" width="20%">📡 <b>API Endpoints</b><br/><h3>12</h3></td>
-<td align="center" width="20%">🗄️ <b>Collections</b><br/><h3>4</h3></td>
-<td align="center" width="20%">⚙️ <b>Auth</b><br/><i>JWT + bcrypt</i></td>
+<td align="center" width="16%">
+📚 <b>Courses</b><br/>
+<h3>9</h3>
+</td>
+
+<td align="center" width="16%">
+🖥️ <b>Frontend Pages</b><br/>
+<h3>8</h3>
+</td>
+
+<td align="center" width="16%">
+📡 <b>API Endpoints</b><br/>
+<h3>12</h3>
+</td>
+
+<td align="center" width="16%">
+🗄️ <b>Collections</b><br/>
+<h3>4</h3>
+</td>
+
+<td align="center" width="16%">
+⚙️ <b>Auth</b><br/>
+<i>JWT + bcrypt</i>
+</td>
+
+<td align="center" width="16%">
+🚀 <b>Live Demo</b><br/>
+<a href="https://educlasses.netlify.app/">View App</a>
+</td>
 </tr>
+
+<tr>
+<td colspan="6" align="center">
+🌐 <b>Live URL:</b>
+<a href="https://educlasses.netlify.app/">https://educlasses.netlify.app/</a>
+</td>
+</tr>
+
 </table>
 
 </div>
-
----
 
 ## 📖 Table of Contents
 
