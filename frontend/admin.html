@@ -135,13 +135,16 @@ align-items:center;
 
 <script>
 
-function formatDateDDMMYY(dateStr){
-  const d = new Date(dateStr);
-  if(isNaN(d.getTime())) return "-";
-  const dd = String(d.getDate()).padStart(2, "0");
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const yy = String(d.getFullYear()).slice(-2);
-  return `${dd}/${mm}/${yy}`;
+function formatDateDDMMYYYY(dateStr) {
+    const d = new Date(dateStr);
+
+    if (isNaN(d.getTime())) return "-";
+
+    const dd = String(d.getDate()).padStart(2, "0");
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const yyyy = d.getFullYear();
+
+    return `${dd}/${mm}/${yyyy}`;
 }
 
 function parseBatchDate(str){

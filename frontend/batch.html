@@ -155,8 +155,11 @@ async function loadBatchSchedule(){
     const res = await fetch(`${API_BASE_URL}/api/batches`);
     const data = await res.json();
 
-    const sortedBatches = (data.batches || []).slice().sort((a, b) => parseBatchDate(a.startDate) - parseBatchDate(b.startDate));
-
+const sortedBatches = (data.batches || [])
+    .slice()
+    .sort((a, b) => {
+        return parseBatchDate(b.startDate).getTime() - parseBatchDate(a.startDate).getTime();
+    });
     if(sortedBatches.length === 0){
       tbody.innerHTML = `<tr><td colspan="6">No upcoming batches announced yet. Please check back soon.</td></tr>`;
       return;
