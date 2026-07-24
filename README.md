@@ -5,7 +5,7 @@
 <img src="screenshots/logo-card.png" alt="EduClasses logo" width="220" />
 
 <a href="#">
-  <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=20&pause=1000&color=2563EB&center=true&vCenter=true&width=650&lines=Real+student+accounts+%E2%80%94+no+more+hardcoded+logins;9+courses%2C+live+batch+schedule%2C+contact+form;Full+admin+dashboard+for+students%2C+batches+%26+enquiries;MERN+stack+%E2%80%94+MongoDB%2C+Express%2C+plain+JS%2C+Node.js" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=20&pause=1000&color=2563EB&center=true&vCenter=true&width=650&lines=Full-stack+MERN+training-institute+platform;9+courses%2C+live+batch+schedule%2C+contact+form;Secure+student+accounts+%E2%80%94+JWT+%2B+bcrypt;Full+admin+dashboard+for+students%2C+batches+%26+enquiries" alt="Typing SVG" />
 </a>
 
 <br/><br/>
@@ -59,30 +59,11 @@
 
 ## 📌 Overview
 
-> **EduClasses** started life as a static training-institute website — a course catalog, a batch schedule, and a contact form with no real logic behind any of it. This project rebuilds the engine underneath, without touching a single pixel of the design.
+> **EduClasses** is a full-stack training-institute platform — a public website for course discovery and enquiries, paired with a secure student portal and admin dashboard, all built on a real MongoDB-backed API.
 
-Every page still looks exactly the same. What changed is everything beneath the surface: student accounts are real and password-hashed, the contact form actually saves enquiries, and a full **admin dashboard** manages students, batches, and enquiries live from MongoDB.
+Visitors can browse the course catalog, check the live batch schedule, and submit enquiries. Students get their own account with a personal dashboard, protected by JWT sessions and bcrypt-hashed passwords. Admins get a dedicated dashboard to manage every student, batch, and enquiry — all pulled live from the database, nothing hardcoded.
 
-<br/>
-
-<div align="center">
-
-**🔁 What Changed**
-
-<table width="90%">
-<tr><th align="left" width="18%">Area</th><th align="left" width="41%">Before</th><th align="left" width="41%">Now</th></tr>
-<tr><td>🔐 <b>Student Login</b></td><td>Hardcoded <code>student</code> / <code>1234</code> in JavaScript</td><td>Real accounts in MongoDB, passwords hashed with <b>bcrypt</b>, sessions via <b>JWT</b></td></tr>
-<tr><td>📝 <b>Student Sign Up</b></td><td>Didn't exist</td><td><b>Sign Up</b> tab on the login page, fully functional</td></tr>
-<tr><td>✉️ <b>Contact Form</b></td><td>Fake "thank you" message, nothing saved</td><td>Real <code>POST</code> to the backend, saved as an <code>Enquiry</code> in MongoDB</td></tr>
-<tr><td>🛡️ <b>Admin</b></td><td>Didn't exist</td><td>Dedicated <b>Admin Login</b> + dashboard to manage students, batches & enquiries</td></tr>
-<tr><td>🗓️ <b>Batch Schedule</b></td><td>Static, hand-edited table</td><td>Pulled live from the <code>Batch</code> collection via the API</td></tr>
-</table>
-
-</div>
-
-<br/>
-
-Built as a full-stack project: static **HTML / CSS / JavaScript** on the frontend, talking to a **Node.js + Express + MongoDB** REST API on the backend — secured with JWT auth and bcrypt password hashing throughout.
+The frontend is built with **HTML, CSS, and JavaScript**; the backend is a **Node.js + Express + MongoDB** REST API, with authentication and role-based access (student vs. admin) handled end-to-end.
 
 <div align="right">
 
@@ -148,7 +129,7 @@ Built as a full-stack project: static **HTML / CSS / JavaScript** on the fronten
 </tr>
 </table>
 
-<p align="center"><i>Submits straight to MongoDB as a real <code>Enquiry</code> document instead of just showing a fake success message.</i></p>
+<p align="center"><i>Submits straight to the backend and saves as a real <code>Enquiry</code> document in MongoDB — the team can act on it right away.</i></p>
 
 ### 🔐 Student & Admin Login <sub>(7)</sub>
 
@@ -214,7 +195,7 @@ Built as a full-stack project: static **HTML / CSS / JavaScript** on the fronten
 
 </td></tr>
 <tr><td>✅ &nbsp; <b>9 professional courses</b> — Web Dev, Java, Python, Data Analytics, Data Science, .NET, UI/UX, Cybersecurity, AI — each with a downloadable syllabus PDF</td></tr>
-<tr><td>✅ &nbsp; <b>Batch Schedule</b> page reads live from the <code>Batch</code> collection instead of a hardcoded table</td></tr>
+<tr><td>✅ &nbsp; <b>Batch Schedule</b> page reads live from the <code>Batch</code> collection, so schedule updates show up instantly</td></tr>
 
 <tr><td>
 
@@ -235,10 +216,10 @@ Built as a full-stack project: static **HTML / CSS / JavaScript** on the fronten
 
 <tr><td>
 
-#### 🎨 Frontend, Untouched <img src="https://img.shields.io/badge/-1-6D5BF0?style=flat-square"/>
+#### 🎨 Consistent, Responsive Design <img src="https://img.shields.io/badge/-1-6D5BF0?style=flat-square"/>
 
 </td></tr>
-<tr><td>✅ &nbsp; Same pages, same styling, same images as the original static site — only the logic underneath is real</td></tr>
+<tr><td>✅ &nbsp; Same clean look and navigation across every page — home, courses, batch schedule, contact, login, dashboard, and admin</td></tr>
 </table>
 
 <br/>
