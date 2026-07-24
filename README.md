@@ -28,11 +28,7 @@
 
 </div>
 
-### **🚀 [Try the Live Demo](https://educlasses.netlify.app/)**
 
-</div>
-
-<br/>
 
 
 <div align="center">
