@@ -222,8 +222,7 @@ async function loadStudents(){
         <td>${s.email}</td>
         <td>${s.phone || "-"}</td>
         <td>${s.course || "-"}</td>
-        <td>${formatDateDDMMYY(s.createdAt)}</td>
-      </tr>
+<td>${formatDateDDMMYYYY(s.createdAt)}</td>      </tr>
     `).join("");
   } catch (err) {
     tbody.innerHTML = `<tr><td colspan="5">Could not reach the server. Is the backend running?</td></tr>`;
