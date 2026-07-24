@@ -4,11 +4,18 @@
 
 <img src="screenshots/logo-card.png" alt="EduClasses logo" width="220" />
 
-<a href="https://educlasses.netlify.app/">
+<a href="#">
   <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=20&pause=1000&color=2563EB&center=true&vCenter=true&width=650&lines=Full-stack+MERN+training-institute+platform;9+courses%2C+live+batch+schedule%2C+contact+form;Secure+student+accounts+%E2%80%94+JWT+%2B+bcrypt;Full+admin+dashboard+for+students%2C+batches+%26+enquiries" alt="Typing SVG" />
 </a>
 
 <br/><br/>
+<a href="https://educlasses.netlify.app/">
+  <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=20&pause=1000&color=8E5BFF&center=true&vCenter=true&width=650&lines=1%2C151+curated+interview+questions;12+subjects+%E2%80%94+from+JavaScript+to+Spring+Boot;Timed%2C+server-graded+mock+tests;100%25+free+%E2%80%94+no+paid+APIs+required" alt="Typing SVG" />
+</a>
+
+<br/><br/>
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20App-8E5BFF?style=for-the-badge&logo=vercel&logoColor=white)](https://educlasses.netlify.app/)
 
 [![Last Commit](https://img.shields.io/github/last-commit/monika0712/educlasses?style=for-the-badge&color=1E40AF)](https://github.com/monika0712/educlasses/commits/main)
 [![Repo Size](https://img.shields.io/github/repo-size/monika0712/educlasses?style=for-the-badge&color=2563EB)](https://github.com/monika0712/educlasses)
