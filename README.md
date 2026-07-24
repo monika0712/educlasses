@@ -75,7 +75,6 @@
 
 </div>
 
----  i want like this in the table add liveurl netlify : https://educlasses.netlify.app/ and live demo : https://educlasses.netlify.app/
 ## 📖 Table of Contents
 
 **🧭 Getting to know it**
