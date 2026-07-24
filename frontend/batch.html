@@ -135,49 +135,66 @@ footer a:hover { text-decoration: underline; }
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
-function parseBatchDate(str){
-  if(!str) return new Date(0);
-  const months = { jan:0, feb:1, mar:2, apr:3, may:4, jun:5, jul:6, aug:7, sep:8, oct:9, nov:10, dec:11 };
-  const match = String(str).trim().match(/(\d{1,2})\s*([A-Za-z]+)\s*'?\s*(\d{2,4})/);
-  if(!match) return new Date(0);
-  const day = parseInt(match[1], 10);
-  const monKey = match[2].toLowerCase().slice(0, 3);
-  const month = months[monKey] !== undefined ? months[monKey] : 0;
-  let year = parseInt(match[3], 10);
-  if(year < 100) year += 2000;
-  return new Date(year, month, day);
+// Convert "01 Aug'26" into a Date object
+function parseBatchDate(dateStr) {
+    if (!dateStr) return new Date(0);
+
+    const months = {
+        Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5,
+        Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11
+    };
+
+    const match = dateStr.trim().match(/^(\d{1,2})\s+([A-Za-z]{3})'(\d{2})$/);
+
+    if (!match) return new Date(0);
+
+    const day = parseInt(match[1], 10);
+    const month = months[match[2]];
+    const year = 2000 + parseInt(match[3], 10);
+
+    return new Date(year, month, day);
 }
 
-async function loadBatchSchedule(){
-  const tbody = document.getElementById("batchesBody");
-  try {
-    const res = await fetch(`${API_BASE_URL}/api/batches`);
-    const data = await res.json();
+async function loadBatchSchedule() {
 
-const sortedBatches = (data.batches || [])
-    .slice()
-    .sort((a, b) => {
-        return parseBatchDate(b.startDate).getTime() - parseBatchDate(a.startDate).getTime();
-    });
-    if(sortedBatches.length === 0){
-      tbody.innerHTML = `<tr><td colspan="6">No upcoming batches announced yet. Please check back soon.</td></tr>`;
-      return;
+    const tbody = document.getElementById("batchesBody");
+
+    try {
+
+        const res = await fetch(`${API_BASE_URL}/api/batches`);
+        const data = await res.json();
+
+        // Sort by Start Date (Newest → Oldest)
+        const sortedBatches = (data.batches || [])
+            .slice()
+            .sort((a, b) => {
+                return parseBatchDate(b.startDate) - parseBatchDate(a.startDate);
+            });
+
+        if (sortedBatches.length === 0) {
+            tbody.innerHTML =
+                `<tr><td colspan="6">No upcoming batches announced yet. Please check back soon.</td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = sortedBatches.map(b => `
+            <tr>
+                <td>${b.courseName}</td>
+                <td>${b.startDate}</td>
+                <td>${b.endDate}</td>
+                <td>${b.timings}</td>
+                <td>${b.days}</td>
+                <td>${b.location}</td>
+            </tr>
+        `).join("");
+
+    } catch (err) {
+
+        tbody.innerHTML =
+            `<tr><td colspan="6">Could not reach the server. Is the backend running?</td></tr>`;
     }
-
-    tbody.innerHTML = sortedBatches.map(b => `
-      <tr>
-        <td>${b.courseName}</td>
-        <td>${b.startDate}</td>
-        <td>${b.endDate}</td>
-        <td>${b.timings}</td>
-        <td>${b.days}</td>
-        <td>${b.location}</td>
-      </tr>
-    `).join("");
-  } catch (err) {
-    tbody.innerHTML = `<tr><td colspan="6">Could not reach the server. Is the backend running?</td></tr>`;
-  }
 }
 
 loadBatchSchedule();
