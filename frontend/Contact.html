@@ -64,7 +64,7 @@ font-family:"Sora", sans-serif;
 .form-card{
 position:relative;
 background:white;
-padding:48px 42px;
+padding:32px 42px;
 border-radius:22px;
 box-shadow:0 25px 60px rgba(12,27,58,0.12);
 overflow:hidden;
@@ -97,12 +97,23 @@ margin-bottom:6px;
 
 .form-card .form-sub{
 color:var(--muted);
-margin-bottom:28px;
+margin-bottom:16px;
 font-size:15px;
 }
 
 .form-card .form-floating{
-margin-bottom:18px;
+margin-bottom:12px;
+}
+
+.form-card .form-floating > .form-control,
+.form-card .form-floating > .form-select{
+min-height:calc(2.5rem + 2px);
+padding-top:0.9rem;
+padding-bottom:0.4rem;
+}
+
+.form-card .form-floating > label{
+padding:0.5rem 0.9rem;
 }
 
 .form-card .form-control,
@@ -155,7 +166,7 @@ box-shadow:none;
 position:relative;
 background:linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
 color:white;
-padding:48px 40px;
+padding:32px 40px;
 border-radius:22px;
 overflow:hidden;
 height:100%;
@@ -188,7 +199,7 @@ position:relative;
 
 .connect-card .connect-sub{
 color:rgba(255,255,255,0.65);
-margin-bottom:30px;
+margin-bottom:16px;
 font-size:14px;
 position:relative;
 }
@@ -197,7 +208,7 @@ position:relative;
 display:flex;
 align-items:flex-start;
 gap:16px;
-padding:14px 0;
+padding:10px 0;
 border-bottom:1px solid rgba(255,255,255,0.1);
 position:relative;
 }
@@ -208,13 +219,13 @@ border-bottom:none;
 
 .icon-badge{
 flex:0 0 auto;
-width:44px;height:44px;
-border-radius:12px;
+width:38px;height:38px;
+border-radius:11px;
 background:rgba(255,255,255,0.1);
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:18px;
+font-size:16px;
 color:var(--orange-2);
 transition:background .2s ease, color .2s ease;
 }
@@ -392,7 +403,7 @@ required>
 </div>
 
 <div class="form-floating">
-<textarea id="eqMessage" class="form-control" placeholder="Write your message..." style="height:110px;"></textarea>
+<textarea id="eqMessage" class="form-control" placeholder="Write your message..." style="height:70px;"></textarea>
 <label for="eqMessage">Write your message...</label>
 </div>
 
