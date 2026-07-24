@@ -1,53 +1,52 @@
-function joinmsg(){
-alert("Redirecting to Login Page");
+function joinmsg() {
+    alert("Redirecting to Login Page");
 }
 
-function joinmsg1(){
-alert("Redirecting to Courses Page");
+function joinmsg1() {
+    alert("Redirecting to Courses Page");
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
 
+    // Our Achievements Hover Effect
+    $('.container1').mouseover(function () {
+        $('.card').css({
+            "background": "orange",
+            "color": "white"
+        });
+    });
 
+    $('.container1').mouseout(function () {
+        $('.card').css({
+            "background": "whitesmoke",
+            "color": "black"
+        });
+    });
 
-$('.container1').mouseover(function(){
-	$('#h2').css({color:"blue","font-size":"40px"});
-	$('.card').css({background:"orange", color:"white",});
-	$('.card p').css({"font-size":"25px", color:"black"});
+    // Course Cards Fade In
+    $(".course-card").fadeIn(800);
+
+    // Course Cards Hover Effect
+    $(".course-card").hover(
+        function () {
+            $(this).css({
+                "margin-top": "-15px",
+                "border": "3px solid black"
+            });
+        },
+        function () {
+            $(this).css({
+                "margin-top": "0px",
+                "border": "none"
+            });
+        }
+    );
+
 });
 
-$('.container1').mouseout(function(){
-	$('#h2').css({color:"black","font-size":"32px"});
-	$('.card').css({background:"whitesmoke",color:"black"})
-	$('.card p').css({"font-size":"15px"});
+function showmsg() {
+    document.getElementById("thankmsg").innerHTML =
+        "✅ Thank you! Your enquiry has been submitted successfully.";
 
-})
-$(".course-card").fadeIn(800);
-
-$(".course-card").hover(
-function(){
-$(this).css("margin-top","-15px");
-$(this).css("border","3px solid black");
-
-},
-function(){
-$(this).css("margin-top","0px");
-$(this).css("border","none");
-
+    return false;
 }
-);
-
-
-
-
-});
-
-
-function showmsg()
-{
-document.getElementById("thankmsg").innerHTML="✅ Thank you! Your enquiry has been submitted successfully.";
-
-return false;
-
-}
-
