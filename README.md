@@ -4,7 +4,7 @@
 
 <img src="screenshots/logo-card.png" alt="EduClasses logo" width="220" />
 
-<a href="#">
+<a href="https://educlasses.netlify.app/">
   <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=20&pause=1000&color=2563EB&center=true&vCenter=true&width=650&lines=Full-stack+MERN+training-institute+platform;9+courses%2C+live+batch+schedule%2C+contact+form;Secure+student+accounts+%E2%80%94+JWT+%2B+bcrypt;Full+admin+dashboard+for+students%2C+batches+%26+enquiries" alt="Typing SVG" />
 </a>
 
