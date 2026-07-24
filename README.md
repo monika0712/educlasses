@@ -13,7 +13,7 @@
   <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=20&pause=1000&color=8E5BFF&center=true&vCenter=true&width=650&lines=1%2C151+curated+interview+questions;12+subjects+%E2%80%94+from+JavaScript+to+Spring+Boot;Timed%2C+server-graded+mock+tests;100%25+free+%E2%80%94+no+paid+APIs+required" alt="Typing SVG" />
 </a>
 
-<br/><br/>
+<br/>
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20App-8E5BFF?style=for-the-badge&logo=vercel&logoColor=white)](https://educlasses.netlify.app/)
 
